@@ -9,58 +9,35 @@
       d:DesignHeight="465.333" d:DesignWidth="542.667"
       Title="Calendar" Foreground="{x:Null}">
     <Grid>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
         <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="7" Background="#BF000000"></Border>
 
-        <Label Grid.Column="0" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="1" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="2" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="3" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="4" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="5" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="6" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day1" Grid.Column="0" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day2" Grid.Column="1" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day3" Grid.Column="2" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day4" Grid.Column="3" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day5" Grid.Column="4" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day6" Grid.Column="5" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day7" Grid.Column="6" Grid.Row="2" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day29" Grid.Column="0" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day30" Grid.Column="1" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day31" Grid.Column="2" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day32" Grid.Column="3" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day33" Grid.Column="4" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day34" Grid.Column="5" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day35" Grid.Column="6" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
 
-        <Label Grid.Column="0" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="1" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="2" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="3" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="4" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="5" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="6" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-
-
-        <Label Grid.Column="0" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="1" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="2" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="3" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="4" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="5" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-        <Label Grid.Column="6" Grid.Row="6" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day36"  Grid.Column="0" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day37" Grid.Column="1" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day38" Grid.Column="2" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day39" Grid.Column="3" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day40" Grid.Column="4" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day41" Grid.Column="5" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+        <Label x:Name="Day42" Grid.Column="6" Grid.Row="7" BorderThickness="1" Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
 
         <Label x:Name="Month" Content="Month" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="0" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18.667" />
 
-        <Label x:Name="SundayLabel"     Content="Sunday"    Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="1"/>
-        <Label x:Name="MondayLabel"     Content="Monday"    Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="SundayLabel"     Content="Sunday"    Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="1"/>
+        <Label x:Name="MondayLabel"     Content="Monday"    Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1"/>
         <Label x:Name="TuesdayLabel"    Content="Tuesday"   Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="1"/>
         <Label x:Name="WednesdayLabel"  Content="Wednesday" Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1"/>
         <Label x:Name="ThursdayLabel"   Content="Thursday"  Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="4" Grid.Row="1"/>
@@ -114,7 +91,7 @@
         <Label x:Name="day40Label2" Content="40" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Grid.Column="4" Grid.Row="7" BorderThickness="1" Focusable="True"/>
         <Label x:Name="day41Label2" Content="41" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Grid.Column="5" Grid.Row="7" BorderThickness="1" Focusable="True"/>
         <Label x:Name="day42Label2" Content="42" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" Grid.Column="6" Grid.Row="7" BorderThickness="1" Focusable="True"/>
-        <!--<TextBox x:Name="day1LabelText" Text="{Binding Source={x:Static p:Settings.Default}, Path=day1 , Mode=TwoWay}" Background="{x:Null}" Foreground="Lime" Grid.Column="0" Grid.Row="2" BorderBrush="#FF780E0E" BorderThickness="1" MouseDown="Label_MouseDown" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" TextWrapping="Wrap"/>-->
+       
         <Label x:Name="day1Label" Content="{Binding day1, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Grid.Column="0" Grid.Row="2" BorderBrush="#FF0097FF" BorderThickness="1" MouseDown="Label_MouseDown" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
         <Label x:Name="day2Label" Content="{Binding day2, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Grid.Column="1" Grid.Row="2" BorderBrush="#FF0097FF" BorderThickness="1" MouseDown="Label_MouseDown1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
         <Label x:Name="day3Label" Content="{Binding day3, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Grid.Column="2" Grid.Row="2" BorderBrush="#FF0097FF" BorderThickness="1" MouseDown="Label_MouseDown2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
@@ -158,5 +135,25 @@
         <Label x:Name="day41Label" Content="{Binding day41, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Grid.Column="5" Grid.Row="7" BorderBrush="#FF0097FF" BorderThickness="1" MouseDown="Label_MouseDown40" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
         <Label x:Name="day42Label" Content="{Binding day42, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Grid.Column="6" Grid.Row="7" BorderBrush="#FF0097FF" BorderThickness="1" MouseDown="Label_MouseDown41" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
     </Grid>
 </Page>

@@ -51,7 +51,6 @@ namespace CalendarUtility
             //Check number of monitors attached to computer
             System.Management.ManagementObjectSearcher monitorObjectSearch = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_DesktopMonitor");
             int Counter = monitorObjectSearch.Get().Count;
-            MessageBox.Show(Counter.ToString());
         }
 
         //Figure out how many screens are connected.

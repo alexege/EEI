@@ -29,22 +29,6 @@ namespace CalendarUtility
         {
             InitializeComponent();
 
-            List<String> colors = new List<string>();
-
-            colors.Add("Black");
-            colors.Add("Blue");
-            colors.Add("Red");
-            colors.Add("Green");
-            colors.Add("Yellow");
-            colors.Add("Brown");
-            colors.Add("Navy");
-            colors.Add("Olive");
-            colors.Add("Pink");
-            colors.Add("Salmon");
-            colors.Add("Violet");
-
-            DataContext = colors;
-
         }
 
     }

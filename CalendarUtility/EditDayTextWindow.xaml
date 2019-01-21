@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:CalendarUtility"
         xmlns:p="clr-namespace:CalendarUtility.Properties"
         mc:Ignorable="d"
-        Title="Edit Day" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Background="Black" Foreground="White" Topmost="True">
+        Title="Edit Day" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Background="Black" Foreground="White" Topmost="True" Icon="ShortcutImages/icons8-calendar-50.png" ResizeMode="CanResizeWithGrip">
     <Grid>
-        <TextBox x:Name="myTextBox" AcceptsReturn="True" AcceptsTab="True" TextWrapping="WrapWithOverflow" Background="{x:Null}" BorderBrush="Red" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Padding="5" Loaded="MyTextBox_Loaded" Height="232" VerticalAlignment="Top" />
-        <Button x:Name="SaveButton" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="SaveButton_Click" Content="Save" Height="30" VerticalAlignment="Bottom"/>
+        <StackPanel>
+            <TextBox x:Name="myTextBox" AcceptsReturn="True" AcceptsTab="True" TextWrapping="WrapWithOverflow" Background="{x:Null}" BorderBrush="Red" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Padding="5" Loaded="MyTextBox_Loaded" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" MinHeight="239" />
+            <Button x:Name="SaveButton" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="SaveButton_Click" Content="Save" MinHeight="30"/>
+        </StackPanel>
     </Grid>
 </Window>

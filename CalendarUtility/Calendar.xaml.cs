@@ -24,7 +24,101 @@ namespace CalendarUtility
             InitializeComponent();
             monthOfYear();
             getDay();
+            setDayOfWeekForegroundColor();
+            setDayOfWeekBorderColor();
 
+        }
+
+        public void setDayOfWeekBorderColor()
+        {
+            var labels = new List<Label> { day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, day7Label, day8Label, day9Label, day10Label, day11Label, day12Label, day13Label, day14Label, day15Label, day16Label, day17Label, day18Label, day19Label, day20Label, day21Label, day22Label, day23Label, day24Label, day25Label, day26Label, day27Label, day28Label, day29Label, day30Label, day31Label, day32Label, day33Label, day34Label, day35Label, day36Label, day37Label, day38Label, day39Label, day40Label, day41Label, day42Label };
+            var labels2 = new List<Label> { day1Label2, day2Label2, day3Label2, day4Label2, day5Label2, day6Label2, day7Label2, day8Label2, day9Label2, day10Label2, day11Label2, day12Label2, day13Label2, day14Label2, day15Label2, day16Label2, day17Label2, day18Label2, day19Label2, day20Label2, day21Label2, day22Label2, day23Label2, day24Label2, day25Label2, day26Label2, day27Label2, day28Label2, day29Label2, day30Label2, day31Label2, day32Label2, day33Label2, day34Label2, day35Label2, day36Label2, day37Label2, day38Label2, day39Label2, day40Label2, day41Label2, day42Label2 };
+
+            for(int i = 0; i < labels.Count; i++)
+            {
+                if(labels2[i].Content.ToString() == DateTime.Now.Date.ToString("dd"))
+                {
+                    labels2[i].BorderThickness = new Thickness(3);
+                    labels2[i].BorderBrush = Brushes.Yellow;
+                }
+            }
+        }
+
+        public void setDayOfWeekForegroundColor()
+        {
+            //Get day of week
+            string day = DateTime.Now.DayOfWeek.ToString();
+
+            //Create a custom brush that takes value from settings "
+            BrushConverter bc = new BrushConverter();
+            SolidColorBrush customColor = bc.ConvertFromString(Properties.Settings.Default.MainWindowForeground.ToString()) as SolidColorBrush;
+
+            switch (day)
+            {
+                case "Sunday":
+                    SundayLabel.Foreground = Brushes.Yellow;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Monday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = Brushes.Yellow;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Tuesday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = Brushes.Yellow;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Wednesday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = Brushes.Yellow; 
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Thursday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = Brushes.Yellow; 
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Friday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = Brushes.Yellow; 
+                    SaturdayLabel.Foreground = customColor;
+                    break;
+                case "Saturday":
+                    SundayLabel.Foreground = customColor;
+                    MondayLabel.Foreground = customColor;
+                    TuesdayLabel.Foreground = customColor;
+                    WednesdayLabel.Foreground = customColor;
+                    ThursdayLabel.Foreground = customColor;
+                    FridayLabel.Foreground = customColor;
+                    SaturdayLabel.Foreground = Brushes.Yellow; 
+                    break;
+            }
         }
 
         //Grab 1st day of the month and set first box to position on grid
@@ -46,6 +140,8 @@ namespace CalendarUtility
             DateTime dateValue = new DateTime(year, month, 1);
 
             //Stored labels in array "Names" and "Names2"
+
+
             Control[] Names = { day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, day7Label, day8Label, day9Label, day10Label, day11Label, day12Label, day13Label, day14Label, day15Label, day16Label, day17Label, day18Label, day19Label, day20Label, day21Label, day22Label, day23Label, day24Label, day25Label, day26Label, day27Label, day28Label, day29Label, day30Label, day31Label, day32Label, day33Label, day34Label, day35Label, day36Label, day37Label, day38Label, day39Label, day40Label, day41Label, day42Label, };
             Control[] Names2 = { day1Label2, day2Label2, day3Label2, day4Label2, day5Label2, day6Label2, day7Label2, day8Label2, day9Label2, day10Label2, day11Label2, day12Label2, day13Label2, day14Label2, day15Label2, day16Label2, day17Label2, day18Label2, day19Label2, day20Label2, day21Label2, day22Label2, day23Label2, day24Label2, day25Label2, day26Label2, day27Label2, day28Label2, day29Label2, day30Label2, day31Label2, day32Label2, day33Label2, day34Label2, day35Label2, day36Label2, day37Label2, day38Label2, day39Label2, day40Label2, day41Label2, day42Label2 };
 
