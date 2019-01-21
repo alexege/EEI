@@ -1,0 +1,14 @@
+﻿<Window x:Name="EditDayWindow" x:Class="CalendarUtility.EditDayTextWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalendarUtility"
+        xmlns:p="clr-namespace:CalendarUtility.Properties"
+        mc:Ignorable="d"
+        Title="Edit Day" Height="300" Width="300" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Background="Black" Foreground="White" Topmost="True">
+    <Grid>
+        <TextBox x:Name="myTextBox" AcceptsReturn="True" AcceptsTab="True" TextWrapping="WrapWithOverflow" Background="{x:Null}" BorderBrush="Red" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Padding="5" Loaded="MyTextBox_Loaded" Height="232" VerticalAlignment="Top" />
+        <Button x:Name="SaveButton" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="SaveButton_Click" Content="Save" Height="30" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
