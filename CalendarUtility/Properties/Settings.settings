@@ -339,13 +339,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MainWindowBackground" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#FF00A2FF</Value>
-    </Setting>
-    <Setting Name="MainWindowForeground" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#00ff00</Value>
+      <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="MainWindowBorder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">White</Value>
+      <Value Profile="(Default)">Red</Value>
     </Setting>
     <Setting Name="ButtonBackground" Type="System.String" Scope="User">
       <Value Profile="(Default)">black</Value>
@@ -358,6 +355,12 @@
     </Setting>
     <Setting Name="IDVal" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ButtonHighlightColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Yellow</Value>
+    </Setting>
+    <Setting Name="MainWindowForeground" Type="System.String" Scope="User">
+      <Value Profile="(Default)">White</Value>
     </Setting>
   </Settings>
 </SettingsFile>

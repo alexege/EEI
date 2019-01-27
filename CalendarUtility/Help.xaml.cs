@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using System.Data;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace CalendarUtility
 {
     /// <summary>
-    /// Interaction logic for Email.xaml
+    /// Interaction logic for Help.xaml
     /// </summary>
-    public partial class Email : Page
+    public partial class Help : Page
     {
-        public Email()
+        public Help()
         {
             InitializeComponent();
-
         }
-
     }
 }

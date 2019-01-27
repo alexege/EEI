@@ -20,43 +20,20 @@ namespace CalendarUtility
     /// </summary>
     public partial class Shortcuts : Page
     {
+        int scButtonSelection;
 
         public Shortcuts()
         {
             InitializeComponent();
             Properties.Settings.Default.Upgrade();
-
-            //if (Properties.Settings.Default.shortcutImage1 == "")
-            //{
-            //    Properties.Settings.Default.shortcutImage1 = (@"D:\Programming\C#\CalendarUtility\CalendarUtility\ShortcutImages2\Internet\Youtube.png");
-            //}
         }
 
-        //private void buttonLabel1_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    //System.Diagnostics.Process.Start(CalendarUtility.Properties.Settings.Default.action);
-        //}
-
-        //private void editSCButton1(object sender, RoutedEventArgs e)
-        //{
-        //    EditShortcutWindow escw = new EditShortcutWindow();
-        //    escw.Show();
-        //}
-
-        //private void scButton01_Click(object sender, RoutedEventArgs e)
-        //{
-        //    System.Diagnostics.Process.Start(CalendarUtility.Properties.Settings.Default.shortcutImage3);
-        //}
-
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    System.Diagnostics.Process.Start(CalendarUtility.Properties.Settings.Default.shortcutImage3);
-        //}
-
-        
-        int scButtonSelection;
         private void scButton1_Click(object sender, RoutedEventArgs e)
         {
+            if(scButton1Image == null)
+            {
+                scButton1.Content = Properties.Settings.Default.shortcutAction1.ToString();
+            }
             scButtonSelection = 1;
             System.Diagnostics.Process.Start(CalendarUtility.Properties.Settings.Default.shortcutAction1);
         }
@@ -235,9 +212,6 @@ namespace CalendarUtility
             System.Diagnostics.Process.Start(CalendarUtility.Properties.Settings.Default.shortcutAction30);
         }
 
-
-
-
         //Edit button Split here
 
         private void scButton1_Edit(object sender, RoutedEventArgs e)
@@ -246,18 +220,8 @@ namespace CalendarUtility
             string myVal = Properties.Settings.Default.shortcutImage1;
             EditShortcutWindow esw1 = new EditShortcutWindow(myVal);
             esw1.Show();
-            //scButtonSelection = 1;
-            //EditShortcutWindow escw = new EditShortcutWindow();
-
-            ////scButton1Image.Source = 
-
-            //string path = Properties.Settings.Default.shortcutImage1;
-            //escw.editImageTextBox.Text = path;
-            //string path2 = Properties.Settings.Default.shortcutAction1;
-            //escw.editFunctionTextBox.Text = path2;
-
-            //escw.Show();
         }
+
         private void scButton2_Edit(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.buttonNumber = 2;
@@ -494,7 +458,6 @@ namespace CalendarUtility
         private void scButton1_Reset(object sender, RoutedEventArgs e)
         {
             //Set button1 image back to default
-
             Properties.Settings.Default.buttonNumber = 1;
             string myVal = Properties.Settings.Default.shortcutImage1;
             EditShortcutWindow esw1 = new EditShortcutWindow(myVal);

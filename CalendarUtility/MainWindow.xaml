@@ -8,33 +8,41 @@
         xmlns:properties="clr=namespace:CalendarUtility.Properties"
         xmlns:p="clr-namespace:CalendarUtility.Properties"
         mc:Ignorable="d"
-        Title="Ege Efficiency Interface" Height="700" Width="700" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="600" Closed="Window_Closed" Icon="D:\Programming\C#\Icon.ico" WindowStyle="None" Foreground="{x:Null}" AllowsTransparency="True" Background="Black" Topmost="True">
+        Title="Ege Efficiency Interface" Height="750" WindowStartupLocation="CenterScreen" MinWidth="700" MinHeight="600" Closed="Window_Closed" Icon="D:\Programming\C#\Icon.ico" Foreground="{x:Null}" Topmost="True" ResizeMode="CanResizeWithGrip" MouseDown="Window_MouseDown" Width="750" WindowStyle="None" AllowsTransparency="True">
+    <Window.Background>
+        <SolidColorBrush Opacity="{Binding Source={x:Static p:Settings.Default}, Path=OpacityValueSetting, Mode=TwoWay}" Color="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBackground, Mode=TwoWay}"/>
+    </Window.Background>
     <Grid>
-        <!--<Border BorderBrush="#FF0C81D3" BorderThickness="2,2,2,0" Grid.ColumnSpan="7" Margin="0,0,1,0" Grid.Row="0"/>-->
-        <Border BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=OneWay}" BorderThickness="2,2,2,0" Grid.ColumnSpan="7" Grid.RowSpan="2"  Margin="0,0,1,0" Grid.Row="0"/>
-        <Border BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=OneWay}" BorderThickness="2"       Grid.ColumnSpan="7" Margin="0,0,1,0" Grid.Row="2"/>
+        <Border BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=OneWay}" BorderThickness="2,2,2,2" Grid.ColumnSpan="7" Grid.RowSpan="4"  Margin="0,0,1,0" Grid.Row="0"/>
 
-        <Button x:Name="ShortcutsButton" Content="Shortcuts"        MinWidth="100" Click="ShortcutsButtonClick"     Grid.Column="0" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="CalendarButton" Content="Calendar"          MinWidth="100" Click="CalendarButtonClick"      Grid.Column="1" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="NotesButton" Content="Notes"                MinWidth="100" Click="NotesButtonClick"         Grid.Column="2" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="ToDoListButton" Content="ToDoList"      MinWidth="100" Click="ToDoListButtonClick"    Grid.Column="3" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="TimersButton" Content="Timers"              MinWidth="100" Click="TimersButtonClick"        Grid.Column="4" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="EmailButton" Content="Email"                MinWidth="100" Click="EmailButtonClick"         Grid.Column="5" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
-        <Button x:Name="CustomizeButton" Content="Customize"        MinWidth="100" Click="CustomizeButtonClick"     Grid.Column="6" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,0"/>
+        <!--<Label x:Name="ProgramName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="EgeEfficiencyInterface" Foreground="#1900FF00" />-->
+        <Label x:Name="MonthLabel" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Background="{x:Null}" Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Label x:Name="TimeLabel1" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Date/time" Height="30" Width="500" FontWeight="Bold" FontFamily="Trajan Pro"/>
+        </Label>
+        <Label x:Name="TimeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Background="{x:Null}" Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Date/time" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
-        <Label x:Name="ProgramName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="EgeEfficiencyInterface" Foreground="#1900FF00" />
-        <Label x:Name="MonthLabel" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" Background="{x:Null}" Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Month" FontSize="18.667"/>
-        <Label x:Name="TimeLabel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Background="{x:Null}" Foreground="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowForeground, Mode=TwoWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Date/time"/>
-        <DockPanel Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28">
-            <Button x:Name="minimize" DockPanel.Dock="Left" Content="-" HorizontalContentAlignment="Center" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="#FF0C81D3" Background="Black" Click="minimize_Click" MinWidth="33.3"/>
-            <Button x:Name="Maximize" Content="1" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="#FF0C81D3" Background="Black" Click="Maximize_Click" HorizontalContentAlignment="Center" MinWidth="33.3" FontFamily="Webdings"/>
-            <Button x:Name="Exit" Content="x" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="#FF0C81D3" Background="Black" Click="Exit_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="33.3"/>
+        <DockPanel Grid.Column="6" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="28" Margin="0,2,2,0">
+            <Button x:Name="minimize" DockPanel.Dock="Left" Content="-" HorizontalContentAlignment="Center" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="minimize_Click" MinWidth="33.3" FontWeight="Bold" BorderThickness="0,2,0,0" BorderBrush="{x:Null}"/>
+            <Button x:Name="Maximize" Content="1" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="Maximize_Click" HorizontalContentAlignment="Center" MinWidth="33.3" FontFamily="Webdings" FontWeight="Bold" BorderThickness="0,2,0,0" BorderBrush="{x:Null}"/>
+            <Button x:Name="Exit" Content="X" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Click="Exit_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MinWidth="33.3" FontWeight="Bold" BorderThickness="0,2,0,0" BorderBrush="{x:Null}"/>
         </DockPanel>
 
-        <ScrollViewer Grid.ColumnSpan="7" Grid.Row="3" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-            <!--Frame-->
-            <Frame x:Name="Main" NavigationUIVisibility="Hidden"  Grid.ColumnSpan="7"       Grid.Column="0" Grid.Row="3" Padding="10" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2" Height="593"/>
-        </ScrollViewer>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="7" Grid.Column="0" Grid.RowSpan="2" Width="700">
+            <DockPanel Grid.Row="2" Grid.ColumnSpan="7" Width="700" MinHeight="28">
+                <Button x:Name="ShortcutsButton" Content="Shortcuts"        MinWidth="100" Click="ShortcutsButtonClick"     Grid.Column="0" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="CalendarButton" Content="Calendar"          MinWidth="100" Click="CalendarButtonClick"      Grid.Column="1" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="NotesButton" Content="Notes"                MinWidth="100" Click="NotesButtonClick"         Grid.Column="2" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="ToDoListButton" Content="ToDoList"          MinWidth="100" Click="ToDoListButtonClick"      Grid.Column="3" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="TimersButton" Content="Timers"              MinWidth="100" Click="TimersButtonClick"        Grid.Column="4" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="ClipBoardButton" Content="ClipBoard"        MinWidth="100" Click="ClipBoardButtonClick"     Grid.Column="5" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+                <Button x:Name="CustomizeButton" Content="Customize"        MinWidth="100" Click="CustomizeButtonClick"     Grid.Column="6" Grid.Row="2" Background="{Binding Source={x:Static p:Settings.Default}, Path=ButtonBackground, Mode=TwoWay}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Source={x:Static p:Settings.Default}, Path=MainWindowBorder, Mode=TwoWay}" BorderThickness="2,2,2,2"/>
+            </DockPanel>
+
+            <ScrollViewer Grid.ColumnSpan="7" Grid.Row="3" VerticalScrollBarVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <!--Frame-->
+                <Frame x:Name="Main" NavigationUIVisibility="Hidden"  Grid.ColumnSpan="7"       Grid.Column="0" Grid.Row="3" Padding="10" BorderThickness="2" Height="593" MaxWidth="700" MaxHeight="593"/>
+            </ScrollViewer>
+        </StackPanel>
 
         <!--Grid Definitions to set number of columns and rows-->
         <Grid.ColumnDefinitions>
@@ -49,8 +57,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height=".08*"></RowDefinition>
             <RowDefinition Height=".05*"></RowDefinition>
-            <RowDefinition Height=".05*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+            <!--<RowDefinition></RowDefinition>-->
         </Grid.RowDefinitions>
     </Grid>
 </Window>

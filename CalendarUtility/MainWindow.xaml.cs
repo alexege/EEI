@@ -21,6 +21,14 @@ namespace CalendarUtility
 
     public partial class MainWindow : Window
     {
+        Shortcuts shortcutsPage = new Shortcuts();
+        Calendar calendarPage = new Calendar();
+        Notes notesPage = new Notes();
+        ToDoList toDoListPage = new ToDoList();
+        Timers timerPage = new Timers();
+        ClipBoard clipBoardPage = new ClipBoard();
+        Customize customizePage = new Customize();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,40 +45,6 @@ namespace CalendarUtility
             }, this.Dispatcher);
 
             MonthLabel.Content = DateTime.Now.ToString("dddd - MMMM dd, yyyy");
-
-            //Mouse Move
-            //MouseDown += Window_MouseDown;
-
-            // For this example, the data to be placed on the clipboard is a simple string.
-            //string textData = "I want to put this string on the clipboard.";
-
-            // After this call, the data (string) is placed on the clipboard and tagged with a data format of "Text".
-            //Clipboard.SetData(DataFormats.Text, (Object)textData);
-
-
-            //Check number of monitors attached to computer
-            System.Management.ManagementObjectSearcher monitorObjectSearch = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_DesktopMonitor");
-            int Counter = monitorObjectSearch.Get().Count;
-        }
-
-        //Figure out how many screens are connected.
-        public int getNumScreens()
-        {
-            double workSpaceLength = System.Windows.SystemParameters.VirtualScreenWidth;
-
-            if(workSpaceLength > 1920.00)
-            {
-                MessageBox.Show("Multiple monitors detected!");
-                return 1;
-            } else if (workSpaceLength <= 1920)
-            {
-                MessageBox.Show("Only 1 monitor detected!");
-                return 0;
-            } else
-            {
-                return -1;
-            }
-
         }
 
         public void resetTextColor()
@@ -81,7 +55,6 @@ namespace CalendarUtility
             NotesButton.Foreground = ShortcutsButton.Foreground;
             ToDoListButton.Foreground = ShortcutsButton.Foreground;
             TimersButton.Foreground = ShortcutsButton.Foreground;
-            EmailButton.Foreground = ShortcutsButton.Foreground;
         }
 
         #region HotkeyIntegration
@@ -95,14 +68,15 @@ namespace CalendarUtility
         private const int HOTKEY_ID = 9000;
 
         //Modifiers:
-        private const uint MOD_NONE = 0x0000; //(none)
-        private const uint MOD_ALT = 0x0001; //ALT
-        private const uint MOD_CONTROL = 0x0002; //CTRL
-        private const uint MOD_SHIFT = 0x0004; //SHIFT
-        private const uint MOD_WIN = 0x0008; //WINDOWS
+        private const uint MOD_NONE =   0x0000; //(none)
+        private const uint MOD_ALT =    0x0001; //ALT
+        private const uint MOD_CONTROL =0x0002; //CTRL
+        private const uint MOD_SHIFT =  0x0004; //SHIFT
+        private const uint MOD_WIN =    0x0008; //WINDOWS
         private const uint VK_CAPITAL = 0x14;   //CAPS LOCK:
-        private const uint VK_Q = 0x51;   //Q Key:
-        private const uint VK_C = 0x43;   //C Key:
+        private const uint VK_Q =       0x51;   //Q Key:
+        private const uint VK_C =       0x43;   //C Key:
+        private const uint VK_B =       0X42;   //B Key:
 
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -115,7 +89,7 @@ namespace CalendarUtility
             _source.AddHook(HwndHook);
 
             //RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL, VK_CAPITAL); //CTRL + CAPS_LOCK
-            //RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL, VK_C); //CTRL + C
+            RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_CONTROL, VK_B); //CTRL + C
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_ALT, VK_Q); //CTRL + Q
         }
 
@@ -153,6 +127,15 @@ namespace CalendarUtility
                                     this.WindowState = WindowState.Normal;
                                     toggle = true;
                                 }
+                            } else if (vkey == VK_B)
+                            {
+
+                                //MessageBox.Show("ctrl + C Pressed!");
+                                string copyData = Clipboard.GetText();
+                                Clipboard.SetData(DataFormats.Text, (object)copyData);
+
+                                clipBoardPage.ClipBoardListBox.Items.Add(copyData);
+                                
                             }
                             //else if (vkey == VK_C) //Control + C Pressed
                             // {
@@ -179,132 +162,105 @@ namespace CalendarUtility
         private void ShortcutsButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new Shortcuts();
+            //Main.Content = new Shortcuts();
+            Main.Content = shortcutsPage;
 
             //Set all button Foregrounds back to default
-            ShortcutsButton.Foreground = MonthLabel.Foreground;
+            ShortcutsButton.Foreground = Brushes.Yellow;
             CalendarButton.Foreground = MonthLabel.Foreground;
             NotesButton.Foreground = MonthLabel.Foreground;
             ToDoListButton.Foreground = MonthLabel.Foreground;
             TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
             CustomizeButton.Foreground = MonthLabel.Foreground;
-            //Change selected button Foreground to Yellow to show which page is selected
-            ShortcutsButton.Foreground = Brushes.Yellow;
         }
 
         private void CalendarButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new Calendar();
+            //Main.Content = new Calendar();
+            Main.Content = calendarPage;
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
-            CalendarButton.Foreground = MonthLabel.Foreground;
+            CalendarButton.Foreground = Brushes.Yellow;
             NotesButton.Foreground = MonthLabel.Foreground;
             ToDoListButton.Foreground = MonthLabel.Foreground;
             TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
             CustomizeButton.Foreground = MonthLabel.Foreground;
-
-            CalendarButton.Foreground = Brushes.Yellow;
         }
 
         private void NotesButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new Notes();
+            //Main.Content = new Notes();
+            Main.Content = notesPage;
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
             CalendarButton.Foreground = MonthLabel.Foreground;
-            NotesButton.Foreground = MonthLabel.Foreground;
+            NotesButton.Foreground = Brushes.Yellow;
             ToDoListButton.Foreground = MonthLabel.Foreground;
             TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
             CustomizeButton.Foreground = MonthLabel.Foreground;
-
-            NotesButton.Foreground = Brushes.Yellow;
         }
 
         private void ToDoListButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new ToDoList();
+            //Main.Content = new ToDoList();
+            Main.Content = toDoListPage;
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
             CalendarButton.Foreground = MonthLabel.Foreground;
             NotesButton.Foreground = MonthLabel.Foreground;
-            ToDoListButton.Foreground = MonthLabel.Foreground;
-            TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
-            CustomizeButton.Foreground = MonthLabel.Foreground;
-
             ToDoListButton.Foreground = Brushes.Yellow;
+            TimersButton.Foreground = MonthLabel.Foreground;
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
+            CustomizeButton.Foreground = MonthLabel.Foreground;
         }
-
-        //private void SoundboardButtonClick(object sender, RoutedEventArgs e)
-        //{
-        //    Properties.Settings.Default.Save();
-
-        //    Main.Content = new ToDoList();
-        //    //Main.Content = new Soundboard();
-
-        //    ShortcutsButton.Foreground = MonthLabel.Foreground;
-        //    CalendarButton.Foreground = MonthLabel.Foreground;
-        //    NotesButton.Foreground = MonthLabel.Foreground;
-        //    ToDoListButton.Foreground = MonthLabel.Foreground;
-        //    TimersButton.Foreground = MonthLabel.Foreground;
-        //    EmailButton.Foreground = MonthLabel.Foreground;
-        //    CustomizeButton.Foreground = MonthLabel.Foreground;
-
-        //    ToDoListButton.Foreground = Brushes.Yellow;
-        //}
 
         private void TimersButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new Timers();
+            Main.Content = timerPage;
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
             CalendarButton.Foreground = MonthLabel.Foreground;
             NotesButton.Foreground = MonthLabel.Foreground;
             ToDoListButton.Foreground = MonthLabel.Foreground;
-            TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
-            CustomizeButton.Foreground = MonthLabel.Foreground;
-
             TimersButton.Foreground = Brushes.Yellow;
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
+            CustomizeButton.Foreground = MonthLabel.Foreground;
         }
 
-        private void EmailButtonClick(object sender, RoutedEventArgs e)
+        private void ClipBoardButtonClick(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Save();
-            Main.Content = new Email();
-            //Main.Content = new Tab6();
+            Main.Content = clipBoardPage;
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
             CalendarButton.Foreground = MonthLabel.Foreground;
             NotesButton.Foreground = MonthLabel.Foreground;
             ToDoListButton.Foreground = MonthLabel.Foreground;
             TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
+            ClipBoardButton.Foreground = Brushes.Yellow;
             CustomizeButton.Foreground = MonthLabel.Foreground;
-
-            EmailButton.Foreground = Brushes.Yellow;
         }
 
         private void CustomizeButtonClick(object sender, RoutedEventArgs e)
         {
+
             Properties.Settings.Default.Save();
-            Main.Content = new Customize();
+            Main.Content = customizePage;
+            //Main.Content = new Customize();
 
             ShortcutsButton.Foreground = MonthLabel.Foreground;
             CalendarButton.Foreground = MonthLabel.Foreground;
             NotesButton.Foreground = MonthLabel.Foreground;
             ToDoListButton.Foreground = MonthLabel.Foreground;
             TimersButton.Foreground = MonthLabel.Foreground;
-            EmailButton.Foreground = MonthLabel.Foreground;
-            CustomizeButton.Foreground = MonthLabel.Foreground;
-
+            ClipBoardButton.Foreground = MonthLabel.Foreground;
             CustomizeButton.Foreground = Brushes.Yellow;
         }
 
@@ -331,7 +287,6 @@ namespace CalendarUtility
             {
                 this.WindowState = System.Windows.WindowState.Normal;
             }
-
         }
 
         private void minimize_Click(object sender, RoutedEventArgs e)
@@ -343,6 +298,14 @@ namespace CalendarUtility
             else
             {
                 this.WindowState = System.Windows.WindowState.Minimized;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }

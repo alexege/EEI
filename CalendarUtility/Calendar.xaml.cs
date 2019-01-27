@@ -22,6 +22,7 @@ namespace CalendarUtility
         public Calendar()
         {
             InitializeComponent();
+
             monthOfYear();
             getDay();
             setDayOfWeekForegroundColor();
@@ -140,34 +141,9 @@ namespace CalendarUtility
             DateTime dateValue = new DateTime(year, month, 1);
 
             //Stored labels in array "Names" and "Names2"
-
-
             Control[] Names = { day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, day7Label, day8Label, day9Label, day10Label, day11Label, day12Label, day13Label, day14Label, day15Label, day16Label, day17Label, day18Label, day19Label, day20Label, day21Label, day22Label, day23Label, day24Label, day25Label, day26Label, day27Label, day28Label, day29Label, day30Label, day31Label, day32Label, day33Label, day34Label, day35Label, day36Label, day37Label, day38Label, day39Label, day40Label, day41Label, day42Label, };
             Control[] Names2 = { day1Label2, day2Label2, day3Label2, day4Label2, day5Label2, day6Label2, day7Label2, day8Label2, day9Label2, day10Label2, day11Label2, day12Label2, day13Label2, day14Label2, day15Label2, day16Label2, day17Label2, day18Label2, day19Label2, day20Label2, day21Label2, day22Label2, day23Label2, day24Label2, day25Label2, day26Label2, day27Label2, day28Label2, day29Label2, day30Label2, day31Label2, day32Label2, day33Label2, day34Label2, day35Label2, day36Label2, day37Label2, day38Label2, day39Label2, day40Label2, day41Label2, day42Label2 };
 
-            //Trying to set border background of current date to yellow.
-            //for(int i = 0; i < Names2.Length; i++)
-            //{
-            //    if (Names2[i].ToString() == "System.Windows.Controls.Label: " + DateTime.Now.ToString(" d").Trim()){
-            //        MessageBox.Show("Today's date is the: " + Names2[i].ToString());
-            //        Names2[i].BorderBrush = Brushes.Yellow;
-            //        Names2[i].BorderThickness = new Thickness(3);
-            //    }
-            //}
-
-            //Change outline color to yellow of currentday
-            //if (DateTime.Now.ToString() == )
-            //for(int i = 0; i < 42; i++) {
-            //    if (Names[i].ToString() == DateTime.Now.ToString())
-            //    {
-            //        this.Background = Brushes.Yellow;
-            //    }
-            //}
-
-
-                //Test calendar - comment out int days ^, and comment out first day of month switch statement
-                //int buttonPos = 3;
-                //int days = 31;
 
             //Find first day of month and set to string
             if (dateValue.DayOfWeek.ToString() == "Sunday")

@@ -48,8 +48,10 @@ namespace CalendarUtility
                 //idListBox.SelectedValuePath = "idlist";
 
                 lbTodoList.ItemsSource = namesTable.AsDataView();
+                lbTodoListDate.ItemsSource = namesTable.AsDataView();
                 //lbTodoList.DisplayMemberPath = "name";
                 lbTodoList.SelectedValuePath = "name";
+                lbTodoListDate.SelectedValue = "date";
                 //lbTodoList.SelectedValue = "Study for test";
                 //lbTodoList.SelectedItem = "Study for test";
 
@@ -65,6 +67,12 @@ namespace CalendarUtility
                 if(this.lbTodoList.Items.Count > 0)
                 {
                     this.lbTodoList.SelectedIndex = 0;
+                }
+
+                lbTodoListDate.SelectedIndex = 0;
+                if(this.lbTodoListDate.Items.Count > 0)
+                {
+                    this.lbTodoListDate.SelectedIndex = 0;
                 }
 
             }
@@ -109,7 +117,7 @@ namespace CalendarUtility
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }            
         }
 
         private void btnShowSelectedItem_Click(object sender, RoutedEventArgs e)
@@ -175,20 +183,7 @@ namespace CalendarUtility
 
         private void lbTodoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (lbTodoList.SelectedItem != null)
-            //{
-            //    MessageBox.Show(lbTodoList.Items.CurrentItem.ToString());//Output -System.Data.DataRowView
-            //    MessageBox.Show(lbTodoList.SelectedItem.ToString());////Output -System.Data.DataRowView
-            //    MessageBox.Show(lbTodoList.SelectedValue != null ? lbTodoList.SelectedValue.ToString() : "I have 0 selected item!");
-            //}
-
-            //if (lbTodoList.SelectedItem != null)
-            //{
-            //    DataRowView d1 = lbTodoList.SelectedItem as DataRowView;
-            //    MessageBox.Show(d1["name"].ToString());
-            //    lbTodoList.SelectedValue = (d1["name"]);
-            //    MessageBox.Show(lbTodoList.SelectedValue.ToString());
-            //}
+            lbTodoListDate.SelectedIndex = lbTodoList.SelectedIndex;
         }
 
         public class TodoItem

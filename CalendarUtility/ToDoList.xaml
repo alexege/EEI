@@ -10,19 +10,32 @@
     <Grid>
         <Label Grid.Row="0" HorizontalAlignment="Center" Content="To Do List" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="24"></Label>
 
-
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
                 <!--<ListBox x:Name="idListBox" Background="{x:Null}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{x:Null}" HorizontalAlignment="Left" MinWidth="23"/>-->
-                <ListBox x:Name="lbTodoList" MinWidth="300" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" Width="360">
+                <ListBox x:Name="lbTodoList" MinWidth="130" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1,1,0,1">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <!--<Border BorderThickness="1" BorderBrush="Red">-->
                             <TextBlock>
                                 <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0}.  {1} &#x09; {2}" xml:space="preserve">
+                                    <MultiBinding StringFormat="{}{0}.  {1}" xml:space="preserve">
                                         <Binding Path="idlist" />
                                         <Binding Path="name" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <!--</Border>-->
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox x:Name="lbTodoListDate" MinWidth="130" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="0,1,1,1">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <!--<Border BorderThickness="1" BorderBrush="Red">-->
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}" xml:space="preserve">
                                         <Binding Path="date" />
                                     </MultiBinding>
                                 </TextBlock.Text>
@@ -31,6 +44,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <!--<ListBox MinWidth="120" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                    <DatePicker Height="20"></DatePicker>
+                </ListBox>-->
                 <!--<ListBox x:Name="dateListBox" Width="83" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{x:Null}" Background="{x:Null}">-->
             </StackPanel>
 
@@ -41,32 +57,32 @@
                     </Style>
                 </StackPanel.Resources>
 
-                <Button Name="btnShowSelectedItem" Click="btnShowSelectedItem_Click" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Show selected</Button>
-                <Button x:Name="btnSelectNext" Click="btnSelectNext_Click" Content="Next" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-                <Button x:Name="btnSelectPrev" Click="btnSelectPrev_Click" Content="Previous" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-                <Button x:Name="btnSelectLast" Click="btnSelectLast_Click" Content="Last" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-                <Button x:Name="btnSelectAll" Click="btnSelectAll_Click" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Select all</Button>
-                <Button x:Name="btnRefresh" Click="btnRefresh_Click" Content="Refresh" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-                <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_Click" Margin="0,0,0,10" Height="30" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Button>
+                <Button Name="btnShowSelectedItem" Click="btnShowSelectedItem_Click" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Show selected</Button>
+                <Button x:Name="btnSelectNext" Click="btnSelectNext_Click" Content="Next" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+                <Button x:Name="btnSelectPrev" Click="btnSelectPrev_Click" Content="Previous" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+                <Button x:Name="btnSelectLast" Click="btnSelectLast_Click" Content="Last" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+                <Button x:Name="btnSelectAll" Click="btnSelectAll_Click" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Select all</Button>
+                <Button x:Name="btnRefresh" Click="btnRefresh_Click" Content="Refresh" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+                <Button x:Name="btnDelete" Content="Delete" Click="BtnDelete_Click" Margin="0,0,0,10" Height="30" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Button>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
             <StackPanel>
                 <Label Content="Id:" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Label>
-                <TextBox x:Name="idTextBox" Height="23" TextWrapping="Wrap" MinWidth="120" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,8"/>
+                <TextBox x:Name="idTextBox" Height="23" TextWrapping="Wrap" MinWidth="120" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,8"/>
             </StackPanel>
             <StackPanel>
                 <Label Content="Name:" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Label>
-                <TextBox x:Name="nameTextBox" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,5"></TextBox>
+                <TextBox x:Name="nameTextBox" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,5"></TextBox>
             </StackPanel>
             <StackPanel>
                 <Label Content="Date:" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Label>
-                <TextBox x:Name="dateTextBox" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,5"></TextBox>
+                <TextBox x:Name="dateTextBox" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="0,0,4,0" Padding="1,0,0,5"></TextBox>
             </StackPanel>
             <StackPanel>
                 <Label Width="37" Height="26" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"></Label>
-                <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add" Margin="0" Width="120" Height="23" Background="{x:Null}" BorderBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+                <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add" Margin="0" Width="120" Height="23" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
         </StackPanel>
 

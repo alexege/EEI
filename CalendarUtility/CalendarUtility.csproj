@@ -96,6 +96,9 @@
     <Compile Include="Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClipBoard.xaml.cs">
+      <DependentUpon>ClipBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Customize.xaml.cs">
       <DependentUpon>Customize.xaml</DependentUpon>
     </Compile>
@@ -104,9 +107,6 @@
     </Compile>
     <Compile Include="EditShortcutWindow.xaml.cs">
       <DependentUpon>EditShortcutWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Email.xaml.cs">
-      <DependentUpon>Email.xaml</DependentUpon>
     </Compile>
     <Compile Include="Notes.xaml.cs">
       <DependentUpon>Notes.xaml</DependentUpon>
@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ClipBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Customize.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,10 +139,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditShortcutWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Email.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,14 +25,20 @@ namespace CalendarUtility
     /// </summary>
     public partial class Timers : Page
     {
+        public string customTime;
+
+        //Timer Custom
+        int timeHours = 0;
+        int timeMinutes = 0;
+        int timeSeconds = 0;
+        private DispatcherTimer Timer;
+
         //Stopwatch
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
 
         //CountDown Timer
-        DispatcherTimer timer;
-        TimeSpan time;
 
         public Timers()
         {
@@ -42,26 +48,77 @@ namespace CalendarUtility
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
-            //CountDown Timer
-            TimeSpan customTime = TimeSpan.Parse("00:45:00");
-            time = customTime;
-//            MessageBox.Show(tbTime.Text);
-
-            //time = TimeSpan.FromSeconds(2); //TimeSpan.FromSeconds(10);
-            //MessageBox.Show(time.ToString());
-            timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-              {
-                  timer.Stop();
-                  tbTime.Text = time.ToString("c");
-                  if (time == TimeSpan.Zero)
-                  {
-                      MessageBox.Show(TimerTextBox.Text + "'s Timer is up!");
-                      timer.Stop();
-                  }
-                  time = time.Add(TimeSpan.FromSeconds(-1));
-              }, Application.Current.Dispatcher);
+            //Timer
+            Timer = new DispatcherTimer();
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Tick += Timer_Tick;
         }
 
+        //Timer Timer_Tick()
+        void Timer_Tick(Object sender, EventArgs e)
+        {
+            customTime = HoursTextBox.Text + MinutesTextBox.Text + SecondsTextBox.Text;
+            //MessageBox.Show("Test1: " + tbTime.Text.Substring(0,2));
+            //MessageBox.Show("Test 2: "+ tbTime.Text.Substring(3,2));
+            //MessageBox.Show("Test 3: " + tbTime.Text.Substring(6, 2));
+            //MessageBox.Show(tbTime.Text.Substring(0, 2) + "," + tbTime.Text.Substring(3, 5) + "," + tbTime.Text.Substring(6, 7));
+
+            //HoursTextBox.Text = tbTime.Text.Substring(0, 2);
+            //MinutesTextBox.Text = tbTime.Text.Substring(3, 2);
+            //SecondsTextBox.Text = tbTime.Text.Substring(6, 2);
+
+            //timeHours = Convert.ToInt32(tbTime.Text.Substring(0, 2));
+            //timeMinutes = Convert.ToInt32(tbTime.Text.Substring(3, 2));
+            //timeSeconds = Convert.ToInt32(tbTime.Text.Substring(6, 2));
+
+
+            if(timeHours > 0 || timeMinutes > 0 || timeSeconds > 0)
+            {
+                updateCounter();
+                if (timeHours > 0)
+                {
+                    if(timeMinutes == 0 && timeSeconds == 0)
+                    {
+                        timeMinutes = 59;
+                        timeSeconds = 59;
+                        timeHours--;
+                    } else if(timeMinutes > 0 && timeSeconds == 0)
+                    {
+                        timeSeconds = 59;
+                        timeMinutes--;
+                    } else if(timeMinutes > 0 && timeSeconds > 0)
+                    {
+                        timeSeconds--;
+                    } else if(timeMinutes == 0 && timeSeconds > 0)
+                    {
+                        timeSeconds--;
+                    }
+                }
+                else if(timeMinutes > 0)
+                {
+                    if(timeSeconds == 0)
+                    {
+                        timeSeconds = 59;
+                        timeMinutes--;
+                    } else if(timeSeconds > 0)
+                    {
+                        timeSeconds--;
+                    }
+                }
+                else if(timeSeconds > 0)
+                {
+                    timeSeconds--;
+                }
+                updateCounter();
+            } else
+            {
+                MessageBox.Show(TimerTextBox.Text + "is up!");
+                Timer.Stop();
+            }
+        }
+
+
+        #region Stopwatch
 
         //StopWatch
         void dt_Tick(object sender, EventArgs e)
@@ -101,21 +158,187 @@ namespace CalendarUtility
             elapsedTimeItem.Items.Clear();
         }
 
-        //Timer
+        #endregion
+
+        #region CountDown Timer
+
+        private void updateCounter()
+        {
+            string timeHoursString;
+            string timeMinutesString;
+            string timeSecondsString;
+
+            if(timeHours < 10) {
+                timeHoursString = "0" + timeHours.ToString();
+            } else
+            {
+                timeHoursString = timeHours.ToString();
+            }
+
+            if(timeMinutes < 10)
+            {
+                timeMinutesString = "0" + timeMinutes.ToString();
+            } else
+            {
+                timeMinutesString = timeMinutes.ToString();
+            }
+
+            if(timeSeconds < 10)
+            {
+                timeSecondsString = "0" + timeSeconds.ToString();
+            } else
+            {
+                timeSecondsString = timeSeconds.ToString();
+            }
+            tbTimeTextBlock.Text = string.Format("{0}:{1}:{2}", timeHoursString, timeMinutesString, timeSecondsString);
+        }
+
         private void TimerStartButton_Click(object sender, RoutedEventArgs e)
         {
-         //   customTime = TimeSpan.Parse(tbTime.Text);
-            timer.Start();
+            //MessageBox.Show("Starting timer");
+            Timer.Start();
         }
 
         private void TimerStopButton_Click(object sender, RoutedEventArgs e)
         {
-            timer.Stop();
+            Timer.Stop();
         }
 
         private void TimerResetButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Timer.Stop();
+            HoursTextBox.Text = customTime.Substring(0, 2);
+            MinutesTextBox.Text = customTime.Substring(2,2);
+            SecondsTextBox.Text = customTime.Substring(4, 2);
+            tbTimeTextBlock.Text = string.Format("{0}:{1}:{2}", HoursTextBox.Text, MinutesTextBox.Text, SecondsTextBox.Text);
         }
+
+        private void TimerClearButton(object sender, RoutedEventArgs e)
+        {
+            Timer.Stop();
+
+            timeHours = 0;
+            timeMinutes = 0;
+            timeSeconds = 0;
+
+            HoursTextBox.Text = "00";
+            MinutesTextBox.Text = "00";
+            SecondsTextBox.Text = "00";
+            tbTimeTextBlock.Text = string.Format("{0}:{1}:{2}", HoursTextBox.Text, MinutesTextBox.Text, SecondsTextBox.Text);
+        }
+
+        private void HoursUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            timeHours += 1;
+            if(timeHours < 10)
+            {
+                HoursTextBox.Text = "0" + timeHours.ToString();
+                updateCounter();
+            } else
+            {
+                HoursTextBox.Text = timeHours.ToString();
+                updateCounter();
+            }
+        }
+
+        private void HoursDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Decrement only if timeHours is positive
+            if(timeHours > 0)
+            {
+                //If timeHours is less than 10, add a 0 next to it.
+                if (timeHours <= 10)
+                {
+                    timeHours -= 1;
+                    HoursTextBox.Text = "0" + timeHours.ToString();
+                    updateCounter();
+
+                } else
+                {
+                    timeHours -= 1;
+                    HoursTextBox.Text = timeHours.ToString();
+                    updateCounter();
+                    
+                }
+                
+            } else
+            {
+                timeHours = 0;
+            }
+        }
+
+        private void MinutesUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            timeMinutes += 1;
+            if(timeMinutes < 10)
+            {
+                MinutesTextBox.Text = "0" + timeMinutes.ToString();
+                updateCounter();
+
+            } else
+            {
+                MinutesTextBox.Text = timeMinutes.ToString();
+                updateCounter();
+            }
+        }
+
+        private void MinutesDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (timeMinutes > 0)
+            {
+                if(timeMinutes <= 10)
+                {
+                    timeMinutes -= 1;
+                    MinutesTextBox.Text = "0" + timeMinutes.ToString();
+                    updateCounter();
+                } else
+                {
+                    timeMinutes -= 1;
+                    MinutesTextBox.Text = timeMinutes.ToString();
+                    updateCounter();
+                }
+            }
+            else
+            {
+                timeMinutes = 0;
+            }
+        }
+
+        private void SecondsUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            timeSeconds += 1;
+            if(timeSeconds < 10)
+            {
+                SecondsTextBox.Text = "0" + timeSeconds.ToString();
+                updateCounter();
+            } else
+            {
+                SecondsTextBox.Text = timeSeconds.ToString();
+                updateCounter();
+            }
+        }
+
+        private void SecondsDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (timeSeconds > 0)
+            {
+                if(timeSeconds <= 10)
+                {
+                    timeSeconds -= 1;
+                    SecondsTextBox.Text = "0" + timeSeconds.ToString();
+                    updateCounter();
+                } else
+                {
+                    timeSeconds -= 1;
+                    SecondsTextBox.Text = timeSeconds.ToString();
+                    updateCounter();
+                }
+            }
+            else
+            {
+                timeSeconds = 0;
+            }
+        }
+        #endregion
     }
 }

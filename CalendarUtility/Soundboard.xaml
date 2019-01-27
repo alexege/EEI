@@ -1,0 +1,50 @@
+﻿<Page x:Class="CalendarUtility.Soundboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CalendarUtility"
+      xmlns:p="clr-namespace:CalendarUtility.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Soundboard" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+    <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Right" Margin="10,0" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,0,0,5" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock FontWeight="Bold" Margin="0,0,0,10">ListBox selection</TextBlock>
+            <Button Name="btnShowSelectedItem" Click="btnShowSelectedItem_Click">Show selected</Button>
+            <Button x:Name="btnSelectNext" Click="btnSelectNext_Click" Content="Next"/>
+            <Button x:Name="btnSelectPrev" Click="btnSelectPrev_Click" Content="Previous"/>
+            <Button x:Name="btnSelectLast" Click="btnSelectLast_Click" Content="Last"/>
+            <Button Name="btnSelectCSharp" Click="btnSelectCSharp_Click">Select C#</Button>
+            <Button Name="btnSelectAll" Click="btnSelectAll_Click">Select all</Button>
+            <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add"/>
+            <Button x:Name="btnRefresh" Click="btnRefresh_Click" Content="Refresh"/>
+            <TextBox x:Name="addTextBox" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+
+            <Label x:Name="label1" Content="Label1" Height="25" VerticalAlignment="Top" Width="100"  Foreground="White"/>
+            <Label x:Name="label2" Content="Label2" Height="25" VerticalAlignment="Top" Width="100" Foreground="White"/>
+            <Label x:Name="label3" Content="Label3" Height="25" VerticalAlignment="Top" Width="100" Foreground="White"/>
+
+        </StackPanel>
+        <ListBox Name="lbTodoList" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged" Background="{Binding Text, ElementName=BackgroundColorCB}" Foreground="{Binding CalendarContentColor, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Title}" />
+                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+
+</Page>

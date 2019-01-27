@@ -179,12 +179,6 @@ namespace CalendarUtility
                     Properties.Settings.Default.currentImage = Properties.Settings.Default.shortcutImage30;
                     break;
             }
-            //int shortcutButtonIndex = CalendarUtility.Properties.Settings.Default.shortcutButtonChoice;
-            //switch (shortcutButtonIndex)
-            //{
-            //    case 1:
-            //        //buttonLabel1.Textx = CalendarUtility.Properties.Settings.Default.day1;
-            //        break;
         }
 
         //scImageButton filedialog
@@ -192,10 +186,6 @@ namespace CalendarUtility
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.FileName = "Edit Image";
-            //dlg.InitialDirectory = Environment.GetFolderPath();                           //Set default filepath of 
-            //dlg.DefaultExt = ".txt";
-            //dlg.Filter = "Text documents (.txt)|*.txt";
-
             Nullable<bool> result = dlg.ShowDialog();
 
             if(result == true)
@@ -203,7 +193,6 @@ namespace CalendarUtility
                 string filename = dlg.FileName;
                 editImageTextBox.Text = filename;
                 Properties.Settings.Default.currentImage = dlg.FileName;
-
             }
         }
 
@@ -358,25 +347,21 @@ namespace CalendarUtility
                     Properties.Settings.Default.shortcutAction30 = editFunctionTextBox.Text;
                     break;
             }
-            //editImageTextBox.Text = Properties.Settings.Default.currentImage;
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Upgrade();
-
-        }
-
-        private void labelExit_MouseEnter(object sender, MouseEventArgs e)
-        {
-            labelExit.Background = Brushes.White;
-            labelExit.Foreground = Brushes.Red;
-        }
-
-        private void labelExit_MouseLeave(object sender, MouseEventArgs e)
-        {
-            labelExit.Background = Brushes.Red;
-            labelExit.Foreground = Brushes.White;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Please select an image and assign it a function."); 
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

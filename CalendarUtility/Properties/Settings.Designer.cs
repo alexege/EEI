@@ -1369,7 +1369,7 @@ namespace CalendarUtility.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FF00A2FF")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public string MainWindowBackground {
             get {
                 return ((string)(this["MainWindowBackground"]));
@@ -1381,19 +1381,7 @@ namespace CalendarUtility.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#00ff00")]
-        public string MainWindowForeground {
-            get {
-                return ((string)(this["MainWindowForeground"]));
-            }
-            set {
-                this["MainWindowForeground"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
         public string MainWindowBorder {
             get {
                 return ((string)(this["MainWindowBorder"]));
@@ -1448,6 +1436,30 @@ namespace CalendarUtility.Properties {
             }
             set {
                 this["IDVal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        public string ButtonHighlightColor {
+            get {
+                return ((string)(this["ButtonHighlightColor"]));
+            }
+            set {
+                this["ButtonHighlightColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public string MainWindowForeground {
+            get {
+                return ((string)(this["MainWindowForeground"]));
+            }
+            set {
+                this["MainWindowForeground"] = value;
             }
         }
     }

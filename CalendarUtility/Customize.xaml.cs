@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FontFamily = System.Windows.Media.FontFamily;
 
 namespace CalendarUtility
 {
@@ -24,13 +25,16 @@ namespace CalendarUtility
         public Customize()
         {
             InitializeComponent();
+            
+            OpacityValue.Content = Properties.Settings.Default.OpacityValueSetting;
 
             //Set combobox text to selected color string
             BackgroundColorCB.Text = Properties.Settings.Default.MainWindowBackground;
             ForegroundColorCB.Text = Properties.Settings.Default.MainWindowForeground;
             BorderColorCB.Text = Properties.Settings.Default.MainWindowBorder;
-            ButtonBackground.Text = Properties.Settings.Default.ButtonBackground;
-            CalendarContent.Text = Properties.Settings.Default.CalendarContentColor;
+            ButtonBackgroundCB.Text = Properties.Settings.Default.ButtonBackground;
+            ButtonHighlightColorCB.Text = Properties.Settings.Default.ButtonHighlightColor;
+            CalendarContentCB.Text = Properties.Settings.Default.CalendarContentColor;
 
             //Create list of possible colors
             List<string> colorList = new List<string>();
@@ -54,7 +58,18 @@ namespace CalendarUtility
                 colorList.Add(colors[i]);
             }
             DataContext = colorList;
-
+        }
+                     
+        public void FillFontComboBox(ComboBox comboBoxFonts)
+        {
+            // Enumerate the current set of system fonts,
+            // and fill the combo box with the names of the fonts.
+            foreach (FontFamily fontFamily in Fonts.SystemFontFamilies)
+            {
+                //FontFamily.Source contains the font family name.
+                comboBoxFonts.Items.Add(fontFamily.Source);
+            }
+            comboBoxFonts.SelectedIndex = 0;
         }
 
         //Save color selection
@@ -75,12 +90,23 @@ namespace CalendarUtility
 
         private void ButtonCB_DropDownClosed(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ButtonBackground = ButtonBackground.Text;
+            Properties.Settings.Default.ButtonBackground = ButtonBackgroundCB.Text;
         }
 
         private void CalendarContentColor_DropDownClosed(object sender, EventArgs e)
         {
-            Properties.Settings.Default.CalendarContentColor = CalendarContent.Text;
+            Properties.Settings.Default.CalendarContentColor = CalendarContentCB.Text;
+        }
+
+        private void ButtonHihglightColorCB_DropDownClosed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ButtonHighlightColor = ButtonHighlightColorCB.Text;
+        }
+
+        private void OpacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            OpacityValue.Content = OpacitySlider.Value * 100;
+            
         }
     }
 }

@@ -24,14 +24,16 @@
 
     <Grid>
 
-        <Border BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="6" Background="#D8000000" />
+        <Border BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="7" Background="#D8000000" />
 
         <Label x:Name="BackgroundColorTB"       Content="Background Color"          Grid.Column="1" Grid.Row="1" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
         <Label x:Name="ForegroundColorTB"       Content="Foreground Color"          Grid.Column="1" Grid.Row="2" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
         <Label x:Name="BorderColorTB"           Content="Border Color"              Grid.Column="1" Grid.Row="3" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
         <Label x:Name="BackgroundButtonTB"      Content="Button Background Color"   Grid.Column="1" Grid.Row="4" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
-        <Label x:Name="CalendarContentColorTB"  Content="Calendar Content Color"    Grid.Column="1" Grid.Row="5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
-        <Label x:Name="OpacityTB"               Content="Opacity %"                 Grid.Column="1" Grid.Row="6" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
+        <Label x:Name="ButtonHighlightColorTB"  Content="Button Highlight Color"    Grid.Column="1" Grid.Row="5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
+        <Label x:Name="CalendarContentColorTB"  Content="Calendar Content Color"    Grid.Column="1" Grid.Row="6" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
+        <!--<Label x:Name="FontFamily"              Content="Font Family"               Grid.Column="1" Grid.Row="7" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>-->
+        <Label x:Name="OpacityTB"               Content="Opacity %"                 Grid.Column="1" Grid.Row="7" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="10.667" Margin="5,0,0,0" BorderThickness="1" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0" HorizontalAlignment="Left"/>
 
         <ComboBox x:Name="BackgroundColorCB" Grid.Column="3" Grid.Row="1" DropDownClosed="BackgroundColorCB_DropDownClosed" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" Background="{x:Null}" FontWeight="Bold">
             <ComboBox.ItemTemplate>
@@ -63,47 +65,78 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ComboBox x:Name="BorderColorCB" Text="Color:" Grid.Column="3" Grid.Row="3" DropDownClosed="BorderColorCB_DropDownClosed" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
-            <ComboBoxItem Content="Blue"/>
-            <ComboBoxItem Content="#FF00A2FF" IsSelected="True"/>
-            <ComboBoxItem Content="Yellow"/>
-            <ComboBoxItem Content="Red"/>
-            <ComboBoxItem Content="Green"/>
-            <ComboBoxItem Content="Black"/>
-            <ComboBoxItem Content="White"/>
-            <ComboBoxItem Content="LimeGreen"/>
+        <ComboBox x:Name="BorderColorCB" Text="Color:" Grid.Column="3" Grid.Row="3" DropDownClosed="BorderColorCB_DropDownClosed" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" Margin="5, 1" Fill="{Binding}"/>
+                        <TextBlock Grid.Column="1" Margin="5, 1" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ComboBox x:Name="ButtonBackground" Text="Color:" Grid.Column="3" Grid.Row="4" DropDownClosed="ButtonCB_DropDownClosed" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
-            <ComboBoxItem Content="Blue"/>
-            <ComboBoxItem Content="#FF00A2FF"/>
-            <ComboBoxItem Content="Yellow"/>
-            <ComboBoxItem Content="Red"/>
-            <ComboBoxItem Content="Green"/>
-            <ComboBoxItem Content="Black"/>
-            <ComboBoxItem Content="White"/>
-            <ComboBoxItem Content="LimeGreen" IsSelected="True"/>
+        <ComboBox x:Name="ButtonBackgroundCB" Text="Color:" Grid.Column="3" Grid.Row="4" DropDownClosed="ButtonCB_DropDownClosed" FontWeight="Bold" Background="{x:Null}" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" Margin="5, 1" Fill="{Binding}"/>
+                        <TextBlock Grid.Column="1" Margin="5, 1" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ComboBox x:Name="CalendarContent" Text="Color:" Grid.Column="3" Grid.Row="5" DropDownClosed="CalendarContentColor_DropDownClosed" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
-            <ComboBoxItem Content="Blue"/>
-            <ComboBoxItem Content="#FF00A2FF"/>
-            <ComboBoxItem Content="Yellow"/>
-            <ComboBoxItem Content="Red"/>
-            <ComboBoxItem Content="Green"/>
-            <ComboBoxItem Content="Black"/>
-            <ComboBoxItem Content="White"/>
-            <ComboBoxItem Content="LimeGreen" IsSelected="True"/>
+        <ComboBox x:Name="ButtonHighlightColorCB" Text="Color:" Grid.Column="3" Grid.Row="5" DropDownClosed="ButtonHihglightColorCB_DropDownClosed" FontWeight="Bold" Background="{x:Null}" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" Margin="5, 1" Fill="{Binding}"/>
+                        <TextBlock Grid.Column="1" Margin="5, 1" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label x:Name="BackgroundColorDemo"     Grid.Column="2" Grid.Row="1"    Background="{Binding Text, ElementName=BackgroundColorCB}" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Label x:Name="ForegroundColorDemo"     Grid.Column="2" Grid.Row="2"    Background="{Binding Text, ElementName=ForegroundColorCB}" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Label x:Name="BorderColorDemo"         Grid.Column="2" Grid.Row="3"    Background="{Binding Text, ElementName=BorderColorCB}"     BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Label x:Name="ButtonBackgroundDemo"    Grid.Column="2" Grid.Row="4"    Background="{Binding Text, ElementName=ButtonBackground}"  BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Label x:Name="CalendarContentDemo"     Grid.Column="2" Grid.Row="5"    Background="{Binding Text, ElementName=CalendarContent}"   BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Label x:Name="OpacityValue"            Grid.Column="2" Grid.Row="6"    Content="{Binding Source={x:Static p:Settings.Default}, Path=OpacityValueSetting, Mode=TwoWay}" Foreground="White" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1"/>
-        <Slider x:Name="OpacitySlider" Value="{Binding Source={x:Static p:Settings.Default}, Path=OpacityValueSetting, Mode=TwoWay}" IsSnapToTickEnabled="True" AutoToolTipPrecision="0"
-                Ticks="0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1" Grid.Row="6" Grid.Column="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1" TickPlacement="BottomRight" Maximum="1" SmallChange="0.25" Focusable="False"/>
+        <ComboBox x:Name="CalendarContentCB" Text="Color:" Grid.Column="3" Grid.Row="6" DropDownClosed="CalendarContentColor_DropDownClosed" FontWeight="Bold" Background="{x:Null}" HorizontalContentAlignment="Stretch" ItemsSource="{Binding}" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" Margin="5, 1" Fill="{Binding}"/>
+                        <TextBlock Grid.Column="1" Margin="5, 1" Text="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!--<ComboBox x:Name="FontFamilyCB" Text="Color:" Grid.Column="3" Grid.Row="7" DropDownClosed="CalendarContentColor_DropDownClosed" FontWeight="Bold" Background="{x:Null}" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" VerticalContentAlignment="Center">
+        </ComboBox>-->
+
+        <Label x:Name="BackgroundColorDemo"         Grid.Column="2" Grid.Row="1"    Background="{Binding Text, ElementName=BackgroundColorCB}"      BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>
+        <Label x:Name="ForegroundColorDemo"         Grid.Column="2" Grid.Row="2"    Background="{Binding Text, ElementName=ForegroundColorCB}"      BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>
+        <Label x:Name="BorderColorDemo"             Grid.Column="2" Grid.Row="3"    Background="{Binding Text, ElementName=BorderColorCB}"          BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>
+        <Label x:Name="ButtonBackgroundDemo"        Grid.Column="2" Grid.Row="4"    Background="{Binding Text, ElementName=ButtonBackgroundCB}"     BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>
+        <Label x:Name="ButtonHighlightColorDemo"    Grid.Column="2" Grid.Row="5"    Background="{Binding Text, ElementName=ButtonHighlightColorCB}" BorderBrush="{Binding Text, ElementName=ButtonHighlightColorCB}"    BorderThickness="1"/>
+        <Label x:Name="CalendarContentDemo"         Grid.Column="2" Grid.Row="6"    Background="{Binding Text, ElementName=CalendarContentCB}"      BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>
+        <!--<Label x:Name="FontFamilyDemo"              Grid.Column="2" Grid.Row="7"    Background="{Binding Text, ElementName=CalendarContentCB}"      BorderBrush="{Binding Text, ElementName=BorderColorCB}"             BorderThickness="1"/>-->
+        <Label x:Name="OpacityValue"                Grid.Column="2" Grid.Row="7"    Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Slider x:Name="OpacitySlider" Value="{Binding Source={x:Static p:Settings.Default}, Path=OpacityValueSetting, Mode=TwoWay}" IsSnapToTickEnabled="True" AutoToolTipPrecision="0" Ticks="0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1" Grid.Row="7" Grid.Column="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{Binding Text, ElementName=BorderColorCB}" BorderThickness="1" TickPlacement="BottomRight" Maximum="1" SmallChange="0.25" Focusable="False" ValueChanged="OpacitySlider_ValueChanged"/>
 
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -126,7 +159,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.40*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>

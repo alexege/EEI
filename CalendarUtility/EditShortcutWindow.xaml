@@ -6,44 +6,37 @@
         xmlns:local="clr-namespace:CalendarUtility"
         xmlns:p="clr-namespace:CalendarUtility.Properties"
         mc:Ignorable="d"
-        Title="EditShortcutWindow" Height="350" Width="300" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderThickness="2" BorderBrush="Black" Closed="Window_Closed" Topmost="True">
-    <Window.Background>
-        <SolidColorBrush Color="#FF00A2FF"/>
-    </Window.Background>
+        Title="EditShortcutWindow" WindowStyle="None" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" BorderThickness="2" BorderBrush="{Binding MainWindowBorder, Source={x:Static p:Settings.Default}}" Closed="Window_Closed" Topmost="True" Background="{Binding MainWindowBackground, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" SizeToContent="WidthAndHeight" MaxWidth="500" MinHeight="300">
     <Grid>
+        <Image x:Name="shortcut1" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="{Binding currentImage, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Stretch="Fill" MaxWidth="100" MaxHeight="100" MinHeight="100"/>
+
+        <Label x:Name="ImageSourceLabel"        Grid.Row="3" Grid.Column="0" Content="Image Source:" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Source={x:Static p:Settings.Default}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1"/>
+        <TextBox x:Name="editImageTextBox"      Grid.Row="3" Grid.Column="1"    Text="Click to edit Image source" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10.667" FontWeight="Bold" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Background="Black" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1" SelectionBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Source={x:Static p:Settings.Default}}" MinWidth="80" />
+        <Button x:Name="editImageButton"        Grid.Row="3" Grid.Column="2"    Content="Edit Image Source" Click="button_Click" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="9.333" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Source={x:Static p:Settings.Default}}" Margin="0" Padding="4"/>
+
+        <Label x:Name="FunctionSourceLabel"     Grid.Row="4" Grid.Column="0" Content="Function Source:" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Source={x:Static p:Settings.Default}}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="1" />
+        <TextBox x:Name="editFunctionTextBox"   Grid.Row="4" Grid.Column="1"    Text="Write full website url or click button to select program to launch"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10.667" FontWeight="Bold" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Background="Black" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1" SelectionBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Source={x:Static p:Settings.Default}}" />
+        <Button x:Name="editFunctionButton"     Grid.Row="4" Grid.Column="2"    Content="Edit Function Source" Click="button_Click1" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="9.333" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Source={x:Static p:Settings.Default}}" Padding="4"/>
+
+        <Button x:Name="saveButton" Grid.Row="5" Grid.ColumnSpan="4" Content="Save" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="SaveButton_Click"/>
+
+        <DockPanel Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Button x:Name="HelpButton" Content="?" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{x:Null}" Width="20" Click="HelpButton_Click"></Button>
+            <Button x:Name="ExitButton" Content="X" Background="{x:Null}" Foreground="{Binding MainWindowForeground, Source={x:Static p:Settings.Default}}" BorderBrush="{x:Null}" Width="20" Click="ExitButton_Click"></Button>
+        </DockPanel>
+        <!--<Border BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="346" VerticalAlignment="Top" Width="296" Grid.RowSpan="6"/>-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <!--<Image  x:Name="shortcut1"  Source="{Binding ElementName=editImageTextBox, Path=Text, Mode=TwoWay}"                                Grid.Row="0" Grid.Column="1"    Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Fill"/>-->
-        <!--<Image  x:Name="shortcut1"  Source="{Binding ElementName=editImageTextBox, Path=Text, Mode=TwoWay}"                                Grid.Row="0" Grid.Column="1"    Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Fill"/>-->
-        <!--<Image  x:Name="shortcut1"  Source="{Binding ElementName=editImageTextBox, Path=Text, Mode=TwoWay}"                                Grid.Row="0" Grid.Column="1"    Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Fill"/>-->
-        <Image  x:Name="shortcut1"  Source="{Binding currentImage, Mode=TwoWay, Source={x:Static p:Settings.Default}}"                                Grid.Row="0" Grid.Column="1"    Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Fill" MaxWidth="100" MaxHeight="100"/>
-        <TextBox x:Name="editImageTextBox"                          Grid.Row="2" Grid.Column="0"    Grid.ColumnSpan="4" Text="Click to edit Image source" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10.667" FontWeight="Bold" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Background="Black" BorderBrush="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="0" SelectionBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-        <Button x:Name="editImageButton"                            Grid.Row="3" Grid.Column="0"    Grid.ColumnSpan="4" Content="Edit Image" Click="button_Click" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="9.333" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
-            <Button.Background>
-                <SolidColorBrush Color="{Binding MainWindowBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-            </Button.Background>
-        </Button>
-        <TextBox x:Name="editFunctionTextBox"                       Grid.Row="4" Grid.Column="0"    Grid.ColumnSpan="4" Text="Write full website url or click button to select program to launch"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10.667" FontWeight="Bold" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Background="Black" BorderBrush="{x:Null}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="0" SelectionBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" CaretBrush="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-        <Button x:Name="editFunctionButton"                         Grid.Row="5" Grid.Column="0"    Grid.ColumnSpan="4" Content="Edit Function" Click="button_Click1" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" FontSize="9.333" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
-            <Button.Background>
-                <SolidColorBrush Color="{Binding MainWindowBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="saveButton" Grid.Row="6" Grid.ColumnSpan="4" Content="Save" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{x:Null}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="SaveButton_Click"/>
-        <Label x:Name="labelExit" Content="X" Grid.Column="3" Margin="25,0,0,0" Width="30" Height="30" Foreground="White" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" Background="Red" MouseDown="labelExit_MouseDown" MouseEnter="labelExit_MouseEnter" MouseLeave="labelExit_MouseLeave" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Border BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="346" VerticalAlignment="Top" Width="296" Grid.RowSpan="6"/>
     </Grid>
 </Window>
