@@ -1462,5 +1462,17 @@ namespace CalendarUtility.Properties {
                 this["MainWindowForeground"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public string WindowBorder {
+            get {
+                return ((string)(this["WindowBorder"]));
+            }
+            set {
+                this["WindowBorder"] = value;
+            }
+        }
     }
 }

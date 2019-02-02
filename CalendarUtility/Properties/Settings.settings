@@ -362,5 +362,8 @@
     <Setting Name="MainWindowForeground" Type="System.String" Scope="User">
       <Value Profile="(Default)">White</Value>
     </Setting>
+    <Setting Name="WindowBorder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

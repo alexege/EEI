@@ -18,7 +18,6 @@ using System.Windows.Threading;
 
 namespace CalendarUtility
 {
-
     public partial class MainWindow : Window
     {
         Shortcuts shortcutsPage = new Shortcuts();
@@ -29,9 +28,16 @@ namespace CalendarUtility
         ClipBoard clipBoardPage = new ClipBoard();
         Customize customizePage = new Customize();
 
+        //Get cursor coordinates
+        [DllImport("user32.dll")]
+        static extern bool GetCursorPos(out POINT lpPoint);
+        public struct POINT { public int X; public int Y; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            //findNumberOfMonitors();
 
             ShortcutsButton.Foreground = Brushes.Yellow;
 
@@ -45,6 +51,49 @@ namespace CalendarUtility
             }, this.Dispatcher);
 
             MonthLabel.Content = DateTime.Now.ToString("dddd - MMMM dd, yyyy");
+        }
+
+        private void openWindowOnMouseWindow()
+        {
+            //Get Mouse Position
+            POINT point;
+            GetCursorPos(out point);
+            var mouseCoordinateX = point.X;
+            var mouseCoordinateY = point.Y;
+
+            var numMonitors = SystemParameters.VirtualScreenWidth / SystemParameters.PrimaryScreenWidth;
+            var totalScreenSpace = SystemParameters.VirtualScreenWidth;
+            var primaryScreenSpace = SystemParameters.PrimaryScreenWidth;
+
+            if(totalScreenSpace / primaryScreenSpace == 1)
+            {
+                //1 monitor
+                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            } else if (totalScreenSpace / primaryScreenSpace == 2)
+            {
+                //2 monitors
+                if (mouseCoordinateX > (totalScreenSpace - primaryScreenSpace))
+                {
+                    this.WindowStartupLocation = WindowStartupLocation.Manual;
+                    this.Left = primaryScreenSpace + (primaryScreenSpace / 2) - (this.ActualWidth / 2);
+                    this.Top = (SystemParameters.PrimaryScreenHeight / 2) - (this.ActualHeight / 2);
+                }
+                else if (mouseCoordinateX < (totalScreenSpace - primaryScreenSpace))
+                { 
+                    this.WindowStartupLocation = WindowStartupLocation.Manual;
+                    this.Left = (primaryScreenSpace / 2) - (this.ActualWidth / 2);
+                    this.Top = (SystemParameters.PrimaryScreenHeight / 2) - (this.ActualHeight / 2);
+                }
+                else
+                {
+                    this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                }
+            } else
+            {
+                this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
+
         }
 
         public void resetTextColor()
@@ -68,15 +117,15 @@ namespace CalendarUtility
         private const int HOTKEY_ID = 9000;
 
         //Modifiers:
-        private const uint MOD_NONE =   0x0000; //(none)
-        private const uint MOD_ALT =    0x0001; //ALT
-        private const uint MOD_CONTROL =0x0002; //CTRL
-        private const uint MOD_SHIFT =  0x0004; //SHIFT
-        private const uint MOD_WIN =    0x0008; //WINDOWS
-        private const uint VK_CAPITAL = 0x14;   //CAPS LOCK:
-        private const uint VK_Q =       0x51;   //Q Key:
-        private const uint VK_C =       0x43;   //C Key:
-        private const uint VK_B =       0X42;   //B Key:
+        private const uint MOD_NONE     = 0x0000; //(none)
+        private const uint MOD_ALT      = 0x0001; //ALT
+        private const uint MOD_CONTROL  = 0x0002; //CTRL
+        private const uint MOD_SHIFT    = 0x0004; //SHIFT
+        private const uint MOD_WIN      = 0x0008; //WINDOWS
+        private const uint VK_CAPITAL   = 0x14;   //CAPS LOCK:
+        private const uint VK_Q         = 0x51;   //Q Key:
+        private const uint VK_C         = 0x43;   //C Key:
+        private const uint VK_B         = 0X42;   //B Key:
 
         private IntPtr _windowHandle;
         private HwndSource _source;
@@ -93,7 +142,6 @@ namespace CalendarUtility
             RegisterHotKey(_windowHandle, HOTKEY_ID, MOD_ALT, VK_Q); //CTRL + Q
         }
 
-        bool toggle = true;
         private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             const int WM_HOTKEY = 0x0312;
@@ -107,27 +155,17 @@ namespace CalendarUtility
                             //if (vkey == VK_CAPITAL)
                             if (vkey == VK_Q)
                             {
-                                if (toggle == true)
+                                openWindowOnMouseWindow();
+
+                                if (this.WindowState == WindowState.Normal)
                                 {
                                     this.WindowState = WindowState.Minimized;
-                                    toggle = false;
-                                }
-                                else
+                                } else
                                 {
-                                    //if(getNumScreens() == 0)
-                                    //{
-
-                                    //} else if(getNumScreens() == 1)
-                                    //{
-
-                                    //} else
-                                    //{
-
-                                    //}
                                     this.WindowState = WindowState.Normal;
-                                    toggle = true;
                                 }
-                            } else if (vkey == VK_B)
+                            }
+                            else if (vkey == VK_B)
                             {
 
                                 //MessageBox.Show("ctrl + C Pressed!");
@@ -137,12 +175,6 @@ namespace CalendarUtility
                                 clipBoardPage.ClipBoardListBox.Items.Add(copyData);
                                 
                             }
-                            //else if (vkey == VK_C) //Control + C Pressed
-                            // {
-                            //     MessageBox.Show("You pressed ctrl + c");
-                            //string textData = "You pressed ctrl + c";
-                            //Clipboard.SetData(DataFormats.Text, (Object)textData);
-                            // }
                             handled = true;
                             break;
                     }

@@ -15,7 +15,7 @@
         <!--ContextMenu Style-->
         <Style TargetType="{x:Type ContextMenu}">
             <Setter Property="Foreground" Value="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
-            <Setter Property="BorderBrush" Value="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
+            <Setter Property="BorderBrush" Value="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ContextMenu}">
@@ -46,7 +46,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <!--Default button properties pt2-->
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -76,7 +76,7 @@
         </Button>
 
         <!--scButton2-->
-        <Button x:Name="scButton2" Click="scButton2_Click" Grid.Column="1" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+        <Button x:Name="scButton2" Click="scButton2_Click" Grid.Column="1" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
             <StackPanel>
                 <Image Source="{Binding Source={x:Static p:Settings.Default}, Path=shortcutImage2, Mode=TwoWay}"/>
             </StackPanel>
@@ -88,7 +88,7 @@
         </Button>
 
         <!--scButton3-->
-        <Button x:Name="scButton3" Click="scButton3_Click"  Grid.Column="2" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton3" Click="scButton3_Click"  Grid.Column="2" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding Source={x:Static p:Settings.Default}, Path=shortcutImage3, Mode=TwoWay}"/>
             </StackPanel>
@@ -100,7 +100,7 @@
         </Button>
 
         <!--scButton4-->
-        <Button x:Name="scButton4" Click="scButton4_Click"  Grid.Column="3" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton4" Click="scButton4_Click"  Grid.Column="3" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage4, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -112,7 +112,7 @@
         </Button>
 
         <!--scButton5-->
-        <Button x:Name="scButton5" Click="scButton5_Click"  Grid.Column="4" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton5" Click="scButton5_Click"  Grid.Column="4" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage5, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -124,7 +124,7 @@
         </Button>
 
         <!--scButton6-->
-        <Button x:Name="scButton6" Click="scButton6_Click"  Grid.Column="5" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton6" Click="scButton6_Click"  Grid.Column="5" Grid.Row="0" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage6, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -136,7 +136,7 @@
         </Button>
 
         <!--scButton7-->
-        <Button x:Name="scButton7" Click="scButton7_Click"  Grid.Column="0" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton7" Click="scButton7_Click"  Grid.Column="0" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage7, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -148,7 +148,7 @@
         </Button>
 
         <!--scButton8-->
-        <Button x:Name="scButton8" Click="scButton8_Click"  Grid.Column="1" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton8" Click="scButton8_Click"  Grid.Column="1" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage8, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -160,7 +160,7 @@
         </Button>
 
         <!--scButton9-->
-        <Button x:Name="scButton9" Click="scButton9_Click"  Grid.Column="2" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton9" Click="scButton9_Click"  Grid.Column="2" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage9, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -172,7 +172,7 @@
         </Button>
 
         <!--scButton10-->
-        <Button x:Name="scButton10" Click="scButton10_Click"  Grid.Column="3" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton10" Click="scButton10_Click"  Grid.Column="3" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage10, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -184,7 +184,7 @@
         </Button>
 
         <!--scButton11-->
-        <Button x:Name="scButton11" Click="scButton11_Click"  Grid.Column="4" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton11" Click="scButton11_Click"  Grid.Column="4" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage11, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -196,7 +196,7 @@
         </Button>
 
         <!--scButton12-->
-        <Button x:Name="scButton12" Click="scButton12_Click"  Grid.Column="5" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton12" Click="scButton12_Click"  Grid.Column="5" Grid.Row="1" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage12, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -208,7 +208,7 @@
         </Button>
 
         <!--scButton13-->
-        <Button x:Name="scButton13" Click="scButton13_Click"  Grid.Column="0" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton13" Click="scButton13_Click"  Grid.Column="0" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage13, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -220,7 +220,7 @@
         </Button>
 
         <!--scButton14-->
-        <Button x:Name="scButton14" Click="scButton14_Click"  Grid.Column="1" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton14" Click="scButton14_Click"  Grid.Column="1" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage14, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -232,7 +232,7 @@
         </Button>
 
         <!--scButton15-->
-        <Button x:Name="scButton15" Click="scButton15_Click"  Grid.Column="2" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton15" Click="scButton15_Click"  Grid.Column="2" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage15, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -244,7 +244,7 @@
         </Button>
 
         <!--scButton16-->
-        <Button x:Name="scButton16" Click="scButton16_Click"  Grid.Column="3" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton16" Click="scButton16_Click"  Grid.Column="3" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage16, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -256,7 +256,7 @@
         </Button>
 
         <!--scButton17-->
-        <Button x:Name="scButton17" Click="scButton17_Click"  Grid.Column="4" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton17" Click="scButton17_Click"  Grid.Column="4" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage17, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -268,7 +268,7 @@
         </Button>
 
         <!--scButton18-->
-        <Button x:Name="scButton18" Click="scButton18_Click"  Grid.Column="5" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton18" Click="scButton18_Click"  Grid.Column="5" Grid.Row="2" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage18, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -280,7 +280,7 @@
         </Button>
 
         <!--scButton19-->
-        <Button x:Name="scButton19" Click="scButton19_Click"  Grid.Column="0" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton19" Click="scButton19_Click"  Grid.Column="0" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage19, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -292,7 +292,7 @@
         </Button>
 
         <!--scButton20-->
-        <Button x:Name="scButton20" Click="scButton20_Click"  Grid.Column="1" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton20" Click="scButton20_Click"  Grid.Column="1" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage20, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -304,7 +304,7 @@
         </Button>
 
         <!--scButton21-->
-        <Button x:Name="scButton21" Click="scButton21_Click"  Grid.Column="2" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton21" Click="scButton21_Click"  Grid.Column="2" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage21, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -316,7 +316,7 @@
         </Button>
 
         <!--scButton22-->
-        <Button x:Name="scButton22" Click="scButton22_Click"  Grid.Column="3" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton22" Click="scButton22_Click"  Grid.Column="3" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage22, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -328,7 +328,7 @@
         </Button>
 
         <!--scButton23-->
-        <Button x:Name="scButton23" Click="scButton23_Click"  Grid.Column="4" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton23" Click="scButton23_Click"  Grid.Column="4" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage23, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -340,7 +340,7 @@
         </Button>
 
         <!--scButton24-->
-        <Button x:Name="scButton24" Click="scButton24_Click"  Grid.Column="5" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton24" Click="scButton24_Click"  Grid.Column="5" Grid.Row="3" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage24, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -352,7 +352,7 @@
         </Button>
 
         <!--scButton25-->
-        <Button x:Name="scButton25" Click="scButton25_Click"  Grid.Column="0" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton25" Click="scButton25_Click"  Grid.Column="0" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage25, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -364,7 +364,7 @@
         </Button>
 
         <!--scButton26-->
-        <Button x:Name="scButton26" Click="scButton26_Click"  Grid.Column="1" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton26" Click="scButton26_Click"  Grid.Column="1" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage26, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -376,7 +376,7 @@
         </Button>
 
         <!--scButton27-->
-        <Button x:Name="scButton27" Click="scButton27_Click"  Grid.Column="2" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton27" Click="scButton27_Click"  Grid.Column="2" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage27, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -388,7 +388,7 @@
         </Button>
 
         <!--scButton28-->
-        <Button x:Name="scButton28" Click="scButton28_Click"  Grid.Column="3" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton28" Click="scButton28_Click"  Grid.Column="3" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage28, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -400,7 +400,7 @@
         </Button>
 
         <!--scButton29-->
-        <Button x:Name="scButton29" Click="scButton29_Click"  Grid.Column="4" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton29" Click="scButton29_Click"  Grid.Column="4" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage29, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>
@@ -412,7 +412,7 @@
         </Button>
 
         <!--scButton30-->
-        <Button x:Name="scButton30" Click="scButton30_Click"  Grid.Column="5" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
+        <Button x:Name="scButton30" Click="scButton30_Click"  Grid.Column="5" Grid.Row="4" MinWidth="100" MinHeight="100" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"  >
             <StackPanel>
                 <Image Source="{Binding shortcutImage30, Source={x:Static p:Settings.Default}}"/>
             </StackPanel>

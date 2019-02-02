@@ -195,9 +195,12 @@ namespace CalendarUtility
 
         private void TimerStartButton_Click(object sender, RoutedEventArgs e)
         {
+            //tbTimeTextBlock.Text = string.Format("{0}:{1}:{2}", HoursTextBox.Text, MinutesTextBox.Text, SecondsTextBox.Text);
+            //customTime = HoursTextBox.Text + MinutesTextBox.Text + SecondsTextBox.Text;
             //MessageBox.Show("Starting timer");
             Timer.Start();
         }
+
 
         private void TimerStopButton_Click(object sender, RoutedEventArgs e)
         {

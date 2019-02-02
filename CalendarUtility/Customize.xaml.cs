@@ -29,12 +29,13 @@ namespace CalendarUtility
             OpacityValue.Content = Properties.Settings.Default.OpacityValueSetting;
 
             //Set combobox text to selected color string
-            BackgroundColorCB.Text = Properties.Settings.Default.MainWindowBackground;
-            ForegroundColorCB.Text = Properties.Settings.Default.MainWindowForeground;
-            BorderColorCB.Text = Properties.Settings.Default.MainWindowBorder;
-            ButtonBackgroundCB.Text = Properties.Settings.Default.ButtonBackground;
+            BackgroundColorCB.Text      = Properties.Settings.Default.MainWindowBackground;
+            ForegroundColorCB.Text      = Properties.Settings.Default.MainWindowForeground;
+            BorderColorCB.Text          = Properties.Settings.Default.WindowBorder;
+            MainWindowBorderCB.Text     = Properties.Settings.Default.MainWindowBorder;
+            ButtonBackgroundCB.Text     = Properties.Settings.Default.ButtonBackground;
             ButtonHighlightColorCB.Text = Properties.Settings.Default.ButtonHighlightColor;
-            CalendarContentCB.Text = Properties.Settings.Default.CalendarContentColor;
+            CalendarContentCB.Text      = Properties.Settings.Default.CalendarContentColor;
 
             //Create list of possible colors
             List<string> colorList = new List<string>();
@@ -85,7 +86,12 @@ namespace CalendarUtility
 
         private void BorderColorCB_DropDownClosed(object sender, EventArgs e)
         {
-            Properties.Settings.Default.MainWindowBorder = BorderColorCB.Text;
+            Properties.Settings.Default.WindowBorder = BorderColorCB.Text;
+        }
+
+        private void MainWindowBorderCB_DropDownClosed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MainWindowBorder = MainWindowBorderCB.Text;
         }
 
         private void ButtonCB_DropDownClosed(object sender, EventArgs e)

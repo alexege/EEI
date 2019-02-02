@@ -11,7 +11,7 @@
     <Page.Resources>
     </Page.Resources>
     <Grid>
-        <ListBox x:Name="ClipBoardListBox" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" >
+        <ListBox x:Name="ClipBoardListBox" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" >
             <!--<Border BorderThickness="1">
                 <Border.BorderBrush>
                     <VisualBrush>
@@ -36,10 +36,10 @@
             </ListBox.ItemTemplate>-->
         </ListBox>
         <StackPanel Grid.Column="1" Margin="0">
-            <Button x:Name="PasteButton"    Content="Paste"    Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="PasteButton_Click"/>
-            <Button x:Name="CopyButton"     Content="Copy"    Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="CopyButton_Click"/>
-            <Button x:Name="DeleteButton"   Content="Delete"  Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="DeleteButton_Click"/>
-            <Button x:Name="ClearButton"    Content="Clear"  Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="ClearButton_Click" />
+            <Button x:Name="PasteButton"    Content="Paste"    Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="PasteButton_Click"/>
+            <Button x:Name="CopyButton"     Content="Copy"    Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="CopyButton_Click"/>
+            <Button x:Name="DeleteButton"   Content="Delete"  Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="DeleteButton_Click"/>
+            <Button x:Name="ClearButton"    Content="Clear"  Height="40" Padding="1" VerticalContentAlignment="Center" Margin="5,0,5,5" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="ClearButton_Click" />
         </StackPanel>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
