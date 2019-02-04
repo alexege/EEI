@@ -17,6 +17,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Threading;
 using System.Diagnostics;
+using System.Media;
 
 namespace CalendarUtility
 {
@@ -112,6 +113,7 @@ namespace CalendarUtility
                 updateCounter();
             } else
             {
+                SystemSounds.Hand.Play();
                 MessageBox.Show(TimerTextBox.Text + "is up!");
                 Timer.Stop();
             }

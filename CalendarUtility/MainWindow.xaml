@@ -44,6 +44,12 @@
             </ScrollViewer>
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,20" Grid.ColumnSpan="5">
+            <Label Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Content="SearchBar:" Margin="5,0,0,0"/>
+            <TextBox x:Name="SearchBarTextBox" Height="23" TextWrapping="Wrap" Width="300" Margin="5,0,0,0" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+            <Button Content="Search" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Margin="5,0,0,0" Width="117" Background="{x:Null}" BorderBrush="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Click="SearchButtonClick"/>
+        </StackPanel>
+
         <!--Grid Definitions to set number of columns and rows-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

@@ -345,7 +345,7 @@
       <Value Profile="(Default)">Red</Value>
     </Setting>
     <Setting Name="ButtonBackground" Type="System.String" Scope="User">
-      <Value Profile="(Default)">black</Value>
+      <Value Profile="(Default)">Pink</Value>
     </Setting>
     <Setting Name="MainWindowButtonColor" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

@@ -1393,7 +1393,7 @@ namespace CalendarUtility.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pink")]
         public string ButtonBackground {
             get {
                 return ((string)(this["ButtonBackground"]));

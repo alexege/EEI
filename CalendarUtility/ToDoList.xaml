@@ -16,16 +16,20 @@
                 <ListBox x:Name="lbTodoList" MinWidth="130" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged" Foreground="{Binding MainWindowForeground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderBrush="{Binding WindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}" Background="{Binding ButtonBackground, Mode=TwoWay, Source={x:Static p:Settings.Default}}" BorderThickness="1,1,0,1">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
                             <!--<Border BorderThickness="1" BorderBrush="Red">-->
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0}.  {1}" xml:space="preserve">
+                                <Ellipse    Width="5"    Height="5"    Fill="{Binding MainWindowBorder, Mode=TwoWay, Source={x:Static p:Settings.Default}}"    Canvas.Left="135"    Canvas.Top="25"/>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                    <!--<MultiBinding StringFormat="{}{0}.  {1}" xml:space="preserve">-->
+                                        <MultiBinding StringFormat="{}  {0}.  {1}" xml:space="preserve">
                                         <Binding Path="idlist" />
                                         <Binding Path="name" />
                                     </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             <!--</Border>-->
+                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

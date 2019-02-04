@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,11 @@ namespace CalendarUtility
     {
         int buttonPos;
 
+        //Get cursor coordinates
+        [DllImport("user32.dll")]
+        static extern bool GetCursorPos(out POINT lpPoint);
+        public struct POINT { public int X; public int Y; }
+
         public Calendar()
         {
             InitializeComponent();
@@ -35,7 +41,9 @@ namespace CalendarUtility
             var labels = new List<Label> { day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, day7Label, day8Label, day9Label, day10Label, day11Label, day12Label, day13Label, day14Label, day15Label, day16Label, day17Label, day18Label, day19Label, day20Label, day21Label, day22Label, day23Label, day24Label, day25Label, day26Label, day27Label, day28Label, day29Label, day30Label, day31Label, day32Label, day33Label, day34Label, day35Label, day36Label, day37Label, day38Label, day39Label, day40Label, day41Label, day42Label };
             var labels2 = new List<Label> { day1Label2, day2Label2, day3Label2, day4Label2, day5Label2, day6Label2, day7Label2, day8Label2, day9Label2, day10Label2, day11Label2, day12Label2, day13Label2, day14Label2, day15Label2, day16Label2, day17Label2, day18Label2, day19Label2, day20Label2, day21Label2, day22Label2, day23Label2, day24Label2, day25Label2, day26Label2, day27Label2, day28Label2, day29Label2, day30Label2, day31Label2, day32Label2, day33Label2, day34Label2, day35Label2, day36Label2, day37Label2, day38Label2, day39Label2, day40Label2, day41Label2, day42Label2 };
 
-            for(int i = 0; i < labels.Count; i++)
+            //MessageBox.Show(labels2[6].Content.ToString());
+
+            for (int i = 0; i < labels.Count; i++)
             {
                 if(labels2[i].Content.ToString() == DateTime.Now.Date.ToString("dd"))
                 {
@@ -185,15 +193,15 @@ namespace CalendarUtility
                     Names2[i].Visibility = Visibility.Collapsed;
                 }
                 #region dayLabels
-                day1Label2.Content = "1";
-                day2Label2.Content = "2";
-                day3Label2.Content = "3";
-                day4Label2.Content = "4";
-                day5Label2.Content = "5";
-                day6Label2.Content = "6";
-                day7Label2.Content = "7";
-                day8Label2.Content = "8";
-                day9Label2.Content = "9";
+                day1Label2.Content = "01";
+                day2Label2.Content = "02";
+                day3Label2.Content = "03";
+                day4Label2.Content = "04";
+                day5Label2.Content = "05";
+                day6Label2.Content = "06";
+                day7Label2.Content = "07";
+                day8Label2.Content = "08";
+                day9Label2.Content = "09";
                 day10Label2.Content = "10";
                 day11Label2.Content = "11";
                 day12Label2.Content = "12";
@@ -241,15 +249,15 @@ namespace CalendarUtility
 
                 #region dayLabels
                 day1Label2.Content  = "";
-                day2Label2.Content  = "1";
-                day3Label2.Content  = "2";
-                day4Label2.Content  = "3";
-                day5Label2.Content  = "4";
-                day6Label2.Content  = "5";
-                day7Label2.Content  = "6";
-                day8Label2.Content  = "7";
-                day9Label2.Content  = "8";
-                day10Label2.Content = "9";
+                day2Label2.Content  = "01";
+                day3Label2.Content  = "02";
+                day4Label2.Content  = "03";
+                day5Label2.Content  = "04";
+                day6Label2.Content  = "05";
+                day7Label2.Content  = "06";
+                day8Label2.Content  = "07";
+                day9Label2.Content  = "08";
+                day10Label2.Content = "09";
                 day11Label2.Content = "10";
                 day12Label2.Content = "11";
                 day13Label2.Content = "12";
@@ -288,15 +296,15 @@ namespace CalendarUtility
                 #region dayLabels
                 day1Label2.Content = "";
                 day2Label2.Content = "";
-                day3Label2.Content = "1";
-                day4Label2.Content = "2";
-                day5Label2.Content = "3";
-                day6Label2.Content = "4";
-                day7Label2.Content = "5";
-                day8Label2.Content = "6";
-                day9Label2.Content = "7";
-                day10Label2.Content = "8";
-                day11Label2.Content = "9";
+                day3Label2.Content = "01";
+                day4Label2.Content = "02";
+                day5Label2.Content = "03";
+                day6Label2.Content = "04";
+                day7Label2.Content = "05";
+                day8Label2.Content = "06";
+                day9Label2.Content = "07";
+                day10Label2.Content = "08";
+                day11Label2.Content = "09";
                 day12Label2.Content = "10";
                 day13Label2.Content = "11";
                 day14Label2.Content = "12";
@@ -337,15 +345,15 @@ namespace CalendarUtility
                 day1Label2.Content = "";
                 day2Label2.Content = "";
                 day3Label2.Content = "";
-                day4Label2.Content = "1";
-                day5Label2.Content = "2";
-                day6Label2.Content = "3";
-                day7Label2.Content = "4";
-                day8Label2.Content = "5";
-                day9Label2.Content = "6";
-                day10Label2.Content = "7";
-                day11Label2.Content = "8";
-                day12Label2.Content = "9";
+                day4Label2.Content = "01";
+                day5Label2.Content = "02";
+                day6Label2.Content = "03";
+                day7Label2.Content = "04";
+                day8Label2.Content = "05";
+                day9Label2.Content = "06";
+                day10Label2.Content = "07";
+                day11Label2.Content = "08";
+                day12Label2.Content = "09";
                 day13Label2.Content = "10";
                 day14Label2.Content = "11";
                 day15Label2.Content = "12";
@@ -388,15 +396,15 @@ namespace CalendarUtility
                 day2Label2.Content = "";
                 day3Label2.Content = "";
                 day4Label2.Content = "";
-                day5Label2.Content = "1";
-                day6Label2.Content = "2";
-                day7Label2.Content = "3";
-                day8Label2.Content = "4";
-                day9Label2.Content = "5";
-                day10Label2.Content = "6";
-                day11Label2.Content = "7";
-                day12Label2.Content = "8";
-                day13Label2.Content = "9";
+                day5Label2.Content = "01";
+                day6Label2.Content = "02";
+                day7Label2.Content = "03";
+                day8Label2.Content = "04";
+                day9Label2.Content = "05";
+                day10Label2.Content = "06";
+                day11Label2.Content = "07";
+                day12Label2.Content = "08";
+                day13Label2.Content = "09";
                 day14Label2.Content = "10";
                 day15Label2.Content = "11";
                 day16Label2.Content = "12";
@@ -442,15 +450,15 @@ namespace CalendarUtility
                 day3Label2.Content = "";
                 day4Label2.Content = "";
                 day5Label2.Content = "";
-                day6Label2.Content = "1";
-                day7Label2.Content = "2";
-                day8Label2.Content = "3";
-                day9Label2.Content = "4";
-                day10Label2.Content = "5";
-                day11Label2.Content = "6";
-                day12Label2.Content = "7";
-                day13Label2.Content = "8";
-                day14Label2.Content = "9";
+                day6Label2.Content = "01";
+                day7Label2.Content = "02";
+                day8Label2.Content = "03";
+                day9Label2.Content = "04";
+                day10Label2.Content = "05";
+                day11Label2.Content = "06";
+                day12Label2.Content = "07";
+                day13Label2.Content = "08";
+                day14Label2.Content = "09";
                 day15Label2.Content = "10";
                 day16Label2.Content = "11";
                 day17Label2.Content = "12";
@@ -501,15 +509,15 @@ namespace CalendarUtility
                 day4Label2.Content = "";
                 day5Label2.Content = "";
                 day6Label2.Content = "";
-                day7Label2.Content = "1";
-                day8Label2.Content = "2";
-                day9Label2.Content = "3";
-                day10Label2.Content = "4";
-                day11Label2.Content = "5";
-                day12Label2.Content = "6";
-                day13Label2.Content = "7";
-                day14Label2.Content = "8";
-                day15Label2.Content = "9";
+                day7Label2.Content = "01";
+                day8Label2.Content = "02";
+                day9Label2.Content = "03";
+                day10Label2.Content = "04";
+                day11Label2.Content = "05";
+                day12Label2.Content = "06";
+                day13Label2.Content = "07";
+                day14Label2.Content = "08";
+                day15Label2.Content = "09";
                 day16Label2.Content = "10";
                 day17Label2.Content = "11";
                 day18Label2.Content = "12";
@@ -541,15 +549,15 @@ namespace CalendarUtility
                 }
 
                 #region dayLabels
-                day1Label2.Content = "1";
-                day2Label2.Content = "2";
-                day3Label2.Content = "3";
-                day4Label2.Content = "4";
-                day5Label2.Content = "5";
-                day6Label2.Content = "6";
-                day7Label2.Content = "7";
-                day8Label2.Content = "8";
-                day9Label2.Content = "9";
+                day1Label2.Content = "01";
+                day2Label2.Content = "02";
+                day3Label2.Content = "03";
+                day4Label2.Content = "04";
+                day5Label2.Content = "05";
+                day6Label2.Content = "06";
+                day7Label2.Content = "07";
+                day8Label2.Content = "08";
+                day9Label2.Content = "09";
                 day10Label2.Content = "10";
                 day11Label2.Content = "11";
                 day12Label2.Content = "12";
@@ -597,15 +605,15 @@ namespace CalendarUtility
 
                 #region dayLabels
                 day1Label2.Content = "";
-                day2Label2.Content = "1";
-                day3Label2.Content = "2";
-                day4Label2.Content = "3";
-                day5Label2.Content = "4";
-                day6Label2.Content = "5";
-                day7Label2.Content = "6";
-                day8Label2.Content = "7";
-                day9Label2.Content = "8";
-                day10Label2.Content = "9";
+                day2Label2.Content = "01";
+                day3Label2.Content = "02";
+                day4Label2.Content = "03";
+                day5Label2.Content = "04";
+                day6Label2.Content = "05";
+                day7Label2.Content = "06";
+                day8Label2.Content = "07";
+                day9Label2.Content = "08";
+                day10Label2.Content = "09";
                 day11Label2.Content = "10";
                 day12Label2.Content = "11";
                 day13Label2.Content = "12";
@@ -644,15 +652,15 @@ namespace CalendarUtility
                 #region dayLabels
                 day1Label2.Content = "";
                 day2Label2.Content = "";
-                day3Label2.Content = "1";
-                day4Label2.Content = "2";
-                day5Label2.Content = "3";
-                day6Label2.Content = "4";
-                day7Label2.Content = "5";
-                day8Label2.Content = "6";
-                day9Label2.Content = "7";
-                day10Label2.Content = "8";
-                day11Label2.Content = "9";
+                day3Label2.Content = "01";
+                day4Label2.Content = "02";
+                day5Label2.Content = "03";
+                day6Label2.Content = "04";
+                day7Label2.Content = "05";
+                day8Label2.Content = "06";
+                day9Label2.Content = "07";
+                day10Label2.Content = "08";
+                day11Label2.Content = "09";
                 day12Label2.Content = "10";
                 day13Label2.Content = "11";
                 day14Label2.Content = "12";
@@ -694,15 +702,15 @@ namespace CalendarUtility
                 day1Label2.Content = "";
                 day2Label2.Content = "";
                 day3Label2.Content = "";
-                day4Label2.Content = "1";
-                day5Label2.Content = "2";
-                day6Label2.Content = "3";
-                day7Label2.Content = "4";
-                day8Label2.Content = "5";
-                day9Label2.Content = "6";
-                day10Label2.Content = "7";
-                day11Label2.Content = "8";
-                day12Label2.Content = "9";
+                day4Label2.Content = "01";
+                day5Label2.Content = "02";
+                day6Label2.Content = "03";
+                day7Label2.Content = "04";
+                day8Label2.Content = "05";
+                day9Label2.Content = "06";
+                day10Label2.Content = "07";
+                day11Label2.Content = "08";
+                day12Label2.Content = "09";
                 day13Label2.Content = "10";
                 day14Label2.Content = "11";
                 day15Label2.Content = "12";
@@ -747,15 +755,15 @@ namespace CalendarUtility
                 day2Label2.Content = "";
                 day3Label2.Content = "";
                 day4Label2.Content = "";
-                day5Label2.Content = "1";
-                day6Label2.Content = "2";
-                day7Label2.Content = "3";
-                day8Label2.Content = "4";
-                day9Label2.Content = "5";
-                day10Label2.Content = "6";
-                day11Label2.Content = "7";
-                day12Label2.Content = "8";
-                day13Label2.Content = "9";
+                day5Label2.Content = "01";
+                day6Label2.Content = "02";
+                day7Label2.Content = "03";
+                day8Label2.Content = "04";
+                day9Label2.Content = "05";
+                day10Label2.Content = "06";
+                day11Label2.Content = "07";
+                day12Label2.Content = "08";
+                day13Label2.Content = "09";
                 day14Label2.Content = "10";
                 day15Label2.Content = "11";
                 day16Label2.Content = "12";
@@ -803,15 +811,15 @@ namespace CalendarUtility
                 day3Label2.Content = "";
                 day4Label2.Content = "";
                 day5Label2.Content = "";
-                day6Label2.Content = "1";
-                day7Label2.Content = "2";
-                day8Label2.Content = "3";
-                day9Label2.Content = "4";
-                day10Label2.Content = "5";
-                day11Label2.Content = "6";
-                day12Label2.Content = "7";
-                day13Label2.Content = "8";
-                day14Label2.Content = "9";
+                day6Label2.Content = "01";
+                day7Label2.Content = "02";
+                day8Label2.Content = "03";
+                day9Label2.Content = "04";
+                day10Label2.Content = "05";
+                day11Label2.Content = "06";
+                day12Label2.Content = "07";
+                day13Label2.Content = "08";
+                day14Label2.Content = "09";
                 day15Label2.Content = "10";
                 day16Label2.Content = "11";
                 day17Label2.Content = "12";
@@ -863,15 +871,15 @@ namespace CalendarUtility
                 day4Label2.Content = "";
                 day5Label2.Content = "";
                 day6Label2.Content = "";
-                day7Label2.Content = "1";
-                day8Label2.Content = "2";
-                day9Label2.Content = "3";
-                day10Label2.Content = "4";
-                day11Label2.Content = "5";
-                day12Label2.Content = "6";
-                day13Label2.Content = "7";
-                day14Label2.Content = "8";
-                day15Label2.Content = "9";
+                day7Label2.Content = "01";
+                day8Label2.Content = "02";
+                day9Label2.Content = "03";
+                day10Label2.Content = "04";
+                day11Label2.Content = "05";
+                day12Label2.Content = "06";
+                day13Label2.Content = "07";
+                day14Label2.Content = "08";
+                day15Label2.Content = "09";
                 day16Label2.Content = "10";
                 day17Label2.Content = "11";
                 day18Label2.Content = "12";
@@ -905,15 +913,15 @@ namespace CalendarUtility
                 }
 
                 #region dayLabels
-                day1Label2.Content = "1";
-                day2Label2.Content = "2";
-                day3Label2.Content = "3";
-                day4Label2.Content = "4";
-                day5Label2.Content = "5";
-                day6Label2.Content = "6";
-                day7Label2.Content = "7";
-                day8Label2.Content = "8";
-                day9Label2.Content = "9";
+                day1Label2.Content = "01";
+                day2Label2.Content = "02";
+                day3Label2.Content = "03";
+                day4Label2.Content = "04";
+                day5Label2.Content = "05";
+                day6Label2.Content = "06";
+                day7Label2.Content = "07";
+                day8Label2.Content = "08";
+                day9Label2.Content = "09";
                 day10Label2.Content = "10";
                 day11Label2.Content = "11";
                 day12Label2.Content = "12";
@@ -961,15 +969,15 @@ namespace CalendarUtility
 
                 #region dayLabels
                 day1Label2.Content = "";
-                day2Label2.Content = "1";
-                day3Label2.Content = "2";
-                day4Label2.Content = "3";
-                day5Label2.Content = "4";
-                day6Label2.Content = "5";
-                day7Label2.Content = "6";
-                day8Label2.Content = "7";
-                day9Label2.Content = "8";
-                day10Label2.Content = "9";
+                day2Label2.Content = "01";
+                day3Label2.Content = "02";
+                day4Label2.Content = "03";
+                day5Label2.Content = "04";
+                day6Label2.Content = "05";
+                day7Label2.Content = "06";
+                day8Label2.Content = "07";
+                day9Label2.Content = "08";
+                day10Label2.Content = "09";
                 day11Label2.Content = "10";
                 day12Label2.Content = "11";
                 day13Label2.Content = "12";
@@ -1009,15 +1017,15 @@ namespace CalendarUtility
                 #region dayLabels
                 day1Label2.Content = "";
                 day2Label2.Content = "";
-                day3Label2.Content = "1";
-                day4Label2.Content = "2";
-                day5Label2.Content = "3";
-                day6Label2.Content = "4";
-                day7Label2.Content = "5";
-                day8Label2.Content = "6";
-                day9Label2.Content = "7";
-                day10Label2.Content = "8";
-                day11Label2.Content = "9";
+                day3Label2.Content = "01";
+                day4Label2.Content = "02";
+                day5Label2.Content = "03";
+                day6Label2.Content = "04";
+                day7Label2.Content = "05";
+                day8Label2.Content = "06";
+                day9Label2.Content = "07";
+                day10Label2.Content = "08";
+                day11Label2.Content = "09";
                 day12Label2.Content = "10";
                 day13Label2.Content = "11";
                 day14Label2.Content = "12";
@@ -1060,15 +1068,15 @@ namespace CalendarUtility
                 day1Label2.Content = "";
                 day2Label2.Content = "";
                 day3Label2.Content = "";
-                day4Label2.Content = "1";
-                day5Label2.Content = "2";
-                day6Label2.Content = "3";
-                day7Label2.Content = "4";
-                day8Label2.Content = "5";
-                day9Label2.Content = "6";
-                day10Label2.Content = "7";
-                day11Label2.Content = "8";
-                day12Label2.Content = "9";
+                day4Label2.Content = "01";
+                day5Label2.Content = "02";
+                day6Label2.Content = "03";
+                day7Label2.Content = "04";
+                day8Label2.Content = "05";
+                day9Label2.Content = "06";
+                day10Label2.Content = "07";
+                day11Label2.Content = "08";
+                day12Label2.Content = "09";
                 day13Label2.Content = "10";
                 day14Label2.Content = "11";
                 day15Label2.Content = "12";
@@ -1114,15 +1122,15 @@ namespace CalendarUtility
                 day2Label2.Content = "";
                 day3Label2.Content = "";
                 day4Label2.Content = "";
-                day5Label2.Content = "1";
-                day6Label2.Content = "2";
-                day7Label2.Content = "3";
-                day8Label2.Content = "4";
-                day9Label2.Content = "5";
-                day10Label2.Content = "6";
-                day11Label2.Content = "7";
-                day12Label2.Content = "8";
-                day13Label2.Content = "9";
+                day5Label2.Content = "01";
+                day6Label2.Content = "02";
+                day7Label2.Content = "03";
+                day8Label2.Content = "04";
+                day9Label2.Content = "05";
+                day10Label2.Content = "06";
+                day11Label2.Content = "07";
+                day12Label2.Content = "08";
+                day13Label2.Content = "09";
                 day14Label2.Content = "10";
                 day15Label2.Content = "11";
                 day16Label2.Content = "12";
@@ -1171,15 +1179,15 @@ namespace CalendarUtility
                 day3Label2.Content = "";
                 day4Label2.Content = "";
                 day5Label2.Content = "";
-                day6Label2.Content = "1";
-                day7Label2.Content = "2";
-                day8Label2.Content = "3";
-                day9Label2.Content = "4";
-                day10Label2.Content = "5";
-                day11Label2.Content = "6";
-                day12Label2.Content = "7";
-                day13Label2.Content = "8";
-                day14Label2.Content = "9";
+                day6Label2.Content = "01";
+                day7Label2.Content = "02";
+                day8Label2.Content = "03";
+                day9Label2.Content = "04";
+                day10Label2.Content = "05";
+                day11Label2.Content = "06";
+                day12Label2.Content = "07";
+                day13Label2.Content = "08";
+                day14Label2.Content = "09";
                 day15Label2.Content = "10";
                 day16Label2.Content = "11";
                 day17Label2.Content = "12";
@@ -1232,15 +1240,15 @@ namespace CalendarUtility
                 day4Label2.Content = "";
                 day5Label2.Content = "";
                 day6Label2.Content = "";
-                day7Label2.Content = "1";
-                day8Label2.Content = "2";
-                day9Label2.Content = "3";
-                day10Label2.Content = "4";
-                day11Label2.Content = "5";
-                day12Label2.Content = "6";
-                day13Label2.Content = "7";
-                day14Label2.Content = "8";
-                day15Label2.Content = "9";
+                day7Label2.Content = "01";
+                day8Label2.Content = "02";
+                day9Label2.Content = "03";
+                day10Label2.Content = "04";
+                day11Label2.Content = "05";
+                day12Label2.Content = "06";
+                day13Label2.Content = "07";
+                day14Label2.Content = "08";
+                day15Label2.Content = "09";
                 day16Label2.Content = "10";
                 day17Label2.Content = "11";
                 day18Label2.Content = "12";
@@ -1580,5 +1588,6 @@ namespace CalendarUtility
             edit.Show();
         }
         #endregion
+
     }
 }

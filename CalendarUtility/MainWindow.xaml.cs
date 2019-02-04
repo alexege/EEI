@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Interop;
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace CalendarUtility
 {
@@ -51,6 +52,10 @@ namespace CalendarUtility
             }, this.Dispatcher);
 
             MonthLabel.Content = DateTime.Now.ToString("dddd - MMMM dd, yyyy");
+
+            //Give primary focus to the search bar
+            SearchBarTextBox.Focus();
+
         }
 
         private void openWindowOnMouseWindow()
@@ -339,6 +344,11 @@ namespace CalendarUtility
             {
                 this.DragMove();
             }
+        }
+
+        private void SearchButtonClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("www.google.com/search?q=" + SearchBarTextBox.Text);
         }
     }
 }

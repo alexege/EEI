@@ -181,9 +181,10 @@ namespace CalendarUtility
             ((DataRowView)(lbTodoList.SelectedItem)).Row.Delete();
         }
 
+        //Match selection based on which element is selected
         private void lbTodoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lbTodoListDate.SelectedIndex = lbTodoList.SelectedIndex;
+            //lbTodoListDate.SelectedIndex = lbTodoList.SelectedIndex;
         }
 
         public class TodoItem
